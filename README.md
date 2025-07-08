@@ -1,5 +1,11 @@
 # Shadcn Component Manager Documentation
 
+[![Documentation](https://img.shields.io/badge/Documentation-Mintlify-blue.svg)](https://docs.scm-registry.vercel.app)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/Shadcn-Component-Manager/docs)
+[![GitHub stars](https://img.shields.io/github/stars/Shadcn-Component-Manager/docs.svg?style=social&label=Star)](https://github.com/Shadcn-Component-Manager/docs)
+[![GitHub issues](https://img.shields.io/github/issues/Shadcn-Component-Manager/docs.svg)](https://github.com/Shadcn-Component-Manager/docs/issues)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 The official documentation for the Shadcn Component Manager (SCM).  Built with Mintlify for a modern, interactive documentation experience.
 
 ## Overview
