@@ -1,32 +1,76 @@
-# Mintlify Starter Kit
+# Shadcn Component Manager Documentation
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
+The official documentation for the Shadcn Component Manager (SCM).  Built with Mintlify for a modern, interactive documentation experience.
 
-- Guide pages
-- Navigation
-- Customizations
-- API Reference pages
-- Use of popular components
+## Overview
 
-### Development
+This documentation provides comprehensive guides for using SCM, including CLI commands, web interface usage, and component development workflows.
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview the documentation changes locally. To install, use the following command
+## Features
 
-```
+- Complete CLI command reference
+- Web interface documentation  
+- Component creation and publishing guides
+- Authentication and configuration setup
+- Interactive examples and code snippets
+- Responsive design for all devices
+
+## Development
+
+### Local Development
+
+Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview the documentation changes locally:
+
+```bash
+# Install Mintlify CLI
 npm i -g mint
-```
 
-Run the following command at the root of your documentation (where docs.json is)
-
-```
+# Run development server
 mint dev
+```
+
+### Building
+
+```bash
+# Build for production
+mint build
+
+# Preview production build
+mint preview
 ```
 
 ### Publishing Changes
 
-Install our Github App to auto propagate changes from your repo to your deployment. Changes will be deployed to production automatically after pushing to the default branch. Find the link to install on your dashboard. 
+The documentation is automatically deployed when changes are pushed to the main branch. The GitHub App handles deployment to production.
 
-#### Troubleshooting
+### Troubleshooting
 
-- If the dev environment isn't running - Run `mint update` to ensure you have the most recent version of the CLI.
-- Page loads as a 404 - Make sure you are running in a folder with `docs.json`
+- **Dev environment not running**: Run `mint update` to ensure you have the latest CLI version
+- **Page loads as 404**: Make sure you're running in a folder with `docs.json`
+- **Changes not reflecting**: Clear cache and restart the dev server
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your documentation changes
+4. Test locally with `mint dev`
+5. Submit a pull request
+
+### Documentation Standards
+
+- Use clear, concise language
+- Include practical examples
+- Follow the established structure
+- Test all code examples
+- Use Mintlify components for consistency
+
+## Related Repositories
+
+- **[CLI Tool](https://github.com/Shadcn-Component-Manager/scm)**: Command-line interface
+- **[Registry](https://github.com/Shadcn-Component-Manager/registry)**: Component repository
+- **[Web Interface](https://github.com/Shadcn-Component-Manager/web)**: Next.js web application
+
+## License
+
+MIT License - see LICENSE file for details.
