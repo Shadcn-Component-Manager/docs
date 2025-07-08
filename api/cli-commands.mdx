@@ -1,0 +1,244 @@
+---
+title: 'CLI Commands API Reference'
+description: 'Complete API reference for all SCM CLI commands based on actual implementation.'
+---
+
+# CLI Commands API Reference
+
+Complete reference for all SCM CLI commands with accurate options and usage.
+
+## Available Commands
+
+### `scm create <name>`
+Create a new component with proper structure.
+
+**Usage:**
+```bash
+scm create <component-name>
+```
+
+**What it does:**
+- Validates component name against reserved names
+- Creates `components/<name>/` directory
+- Generates `registry.json` with basic metadata
+- Creates TypeScript component file with proper structure
+
+**Example:**
+```bash
+scm create my-button
+```
+
+---
+
+### `scm login`
+Authenticate with GitHub using OAuth device flow.
+
+**Usage:**
+```bash
+scm login [--force]
+```
+
+**Options:**
+- `--force`: Force re-authentication even if already logged in
+
+**Example:**
+```bash
+scm login
+scm login --force
+```
+
+---
+
+### `scm logout`
+Clear stored authentication credentials.
+
+**Usage:**
+```bash
+scm logout
+```
+
+---
+
+### `scm add <component>`
+Install a component from the registry.
+
+**Usage:**
+```bash
+scm add <namespace>/<name>[@version] [--force]
+```
+
+**Options:**
+- `@version`: Install specific version (e.g., `user/button@1.0.0`)
+- `--force`: Force refresh cache and reinstall
+
+**Examples:**
+```bash
+scm add user/button
+scm add user/button@1.0.0
+scm add user/button --force
+```
+
+**What it does:**
+- Downloads component files from registry
+- Installs required NPM dependencies
+- Handles reserved component names (redirects to shadcn/ui)
+- Applies CSS variables if defined
+- Tracks installed components for updates
+
+---
+
+### `scm publish`
+Publish a component to the registry.
+
+**Usage:**
+```bash
+scm publish [--yes] [--message <message>] [--item <item>]
+```
+
+**Options:**
+- `--yes`: Skip confirmation prompts
+- `--message <message>`: Custom commit message
+- `--item <item>`: Specific item to publish from registry collection
+
+**What it does:**
+- Validates component structure and metadata
+- Detects version changes automatically
+- Creates GitHub branch and pull request
+- Handles both single components and registry collections
+
+---
+
+### `scm search <keyword>`
+Search for components in the registry.
+
+**Usage:**
+```bash
+scm search <keyword> [--force] [--category <category>] [--limit <number>]
+```
+
+**Options:**
+- `--force`: Force refresh cache
+- `--category <category>`: Filter by category
+- `--limit <number>`: Limit results (default: 10)
+
+**Examples:**
+```bash
+scm search button
+scm search "dark mode" --category ui
+scm search user --limit 5
+```
+
+---
+
+### `scm preview <component>`
+Preview component details and documentation.
+
+**Usage:**
+```bash
+scm preview <namespace>/<name> [--version <version>]
+```
+
+**Options:**
+- `--version <version>`: Preview specific version (default: latest)
+
+**Example:**
+```bash
+scm preview user/button
+scm preview user/button --version 1.0.0
+```
+
+---
+
+### `scm update [component]`
+Update installed components to latest versions.
+
+**Usage:**
+```bash
+scm update [component-name] [--force] [--dry-run]
+```
+
+**Options:**
+- `--force`: Force update even if no newer version available
+- `--dry-run`: Show what would be updated without making changes
+
+**Examples:**
+```bash
+scm update                    # Update all components
+scm update user/button        # Update specific component
+scm update --dry-run          # Check for updates
+```
+
+---
+
+### `scm fork <component>`
+Fork a component for customization.
+
+**Usage:**
+```bash
+scm fork <namespace>/<name> [--version <version>] [--name <name>]
+```
+
+**Options:**
+- `--version <version>`: Fork specific version (default: latest)
+- `--name <name>`: Custom name for forked component
+
+**Example:**
+```bash
+scm fork user/button --name my-button
+scm fork user/button --version 1.0.0
+```
+
+## Command Categories
+
+<CardGroup cols={3}>
+  <Card title="Authentication">
+    - `scm login` - Authenticate with GitHub
+    - `scm logout` - Clear credentials
+  </Card>
+  <Card title="Component Management">
+    - `scm create` - Create new components
+    - `scm add` - Install components
+    - `scm update` - Update components
+    - `scm publish` - Publish to registry
+  </Card>
+  <Card title="Discovery & Customization">
+    - `scm search` - Search components
+    - `scm preview` - Preview details
+    - `scm fork` - Fork components
+  </Card>
+</CardGroup>
+
+## Global Options
+
+All commands support these global options:
+
+- `--help, -h`: Display help information
+- `--version, -V`: Display version information
+
+## Environment Variables
+
+- `GITHUB_TOKEN`: GitHub access token (alternative to OAuth)
+- `SCM_REGISTRY_URL`: Custom registry URL
+- `SCM_DEBUG`: Enable debug logging
+
+## Exit Codes
+
+- `0`: Success
+- `1`: General error
+
+## Related Documentation
+
+<CardGroup cols={2}>
+  <Card title="Authentication" href="/cli/authentication">
+    Authentication setup
+  </Card>
+  <Card title="Component Creation" href="/cli/create">
+    Create components
+  </Card>
+  <Card title="Publishing" href="/cli/publish">
+    Publish components
+  </Card>
+  <Card title="Registry Structure" href="/registry/structure">
+    Registry structure
+  </Card>
+</CardGroup> 

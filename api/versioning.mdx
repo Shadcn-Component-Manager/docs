@@ -1,0 +1,80 @@
+---
+title: 'Versioning API'
+description: 'API reference for SCM versioning, including semantic versioning, detection, and update flows.'
+---
+
+# Versioning API
+
+SCM uses semantic versioning (semver) to manage component versions. This API reference describes how versioning is handled, how updates are detected, and best practices for version management.
+
+## Semantic Versioning
+
+Component versions follow the format: `MAJOR.MINOR.PATCH` (e.g., `1.2.3`).
+
+<CardGroup cols={3}>
+  <Card title="MAJOR">
+    Breaking changes
+  </Card>
+  <Card title="MINOR">
+    Backward-compatible features
+  </Card>
+  <Card title="PATCH">
+    Backward-compatible bug fixes
+  </Card>
+</CardGroup>
+
+## Version Detection
+
+<CardGroup cols={2}>
+  <Card title="Automatic Detection">
+    SCM automatically detects version changes based on file modifications
+  </Card>
+  <Card title="Version Comparison">
+    When publishing, SCM compares the current version to the previous version
+  </Card>
+  <Card title="Breaking Changes">
+    If breaking changes are detected, a major version bump is suggested
+  </Card>
+</CardGroup>
+
+## Update Flow
+
+<Steps>
+  <Step title="Component Updated">
+    Component is updated locally
+  </Step>
+  <Step title="Version Incremented">
+    Version is incremented in `registry.json`
+  </Step>
+  <Step title="Publish">
+    `scm publish` validates the new version
+  </Step>
+  <Step title="Pull Request">
+    Pull request is created for the new version
+  </Step>
+  <Step title="Update">
+    Users can update with `scm update`
+  </Step>
+</Steps>
+
+## Example: registry.json
+
+```json
+{
+  "name": "my-component",
+  "version": "1.1.0",
+  "dependencies": ["react@^18.0.0"],
+  "registryDependencies": ["button"]
+}
+```
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Version Management">
+    - Bump the version for every published change
+    - Use major version for breaking changes
+    - Use minor/patch for features and fixes
+    - Document changes in the README or changelog
+  </Card>
+</CardGroup> 

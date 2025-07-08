@@ -1,0 +1,204 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "palm",
+  "name": "Shadcn Component Manager",
+  "description": "The official documentation for SCM - an open-source CLI tool and registry ecosystem for creating, sharing, and installing UI components.",
+  "colors": {
+    "primary": "#CB3837",
+    "light": "#E53E3E",
+    "dark": "#A52A2A"
+  },
+  "favicon": "/favicon.svg",
+  "background": {
+    "decoration": "windows"
+  },
+       "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
+  },
+  "navigation": {
+    "dropdowns": [
+      {
+        "dropdown": "Getting Started",
+        "icon": "rocket",
+        "description": "Introduction",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "index",
+              "what-is-scm"
+            ]
+          },
+          {
+            "group": "Quick Start",
+            "pages": [
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Installation & Setup",
+            "pages": [
+              "cli/authentication",
+              "cli/configuration"
+            ]
+          },
+          {
+            "group": "Basic Usage",
+            "pages": [
+              "cli/add",
+              "cli/search",
+              "cli/update"
+            ]
+          },
+          {
+            "group": "Web Interface",
+            "pages": [
+              "web/overview",
+              "web/browsing",
+              "web/search",
+              "web/preview"
+            ]
+          }
+        ]
+      },
+      {
+        "dropdown": "CLI Reference",
+        "icon": "terminal",
+        "description": "CLI reference",
+        "groups": [
+          {
+            "group": "Authentication",
+            "pages": [
+              "cli/login",
+              "cli/logout"
+            ]
+          },
+          {
+            "group": "Component Management",
+            "pages": [
+              "cli/create",
+              "cli/publish",
+              "cli/add",
+              "cli/update"
+            ]
+          },
+          {
+            "group": "Discovery & Search",
+            "pages": [
+              "cli/search",
+              "cli/preview",
+              "cli/fork"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "pages": [
+              "cli/configuration",
+              "cli/reserved-names"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "api/cli-commands",
+              "api/component-metadata",
+              "api/versioning"
+            ]
+          }
+        ]
+      },
+      {
+        "dropdown": "Registry",
+        "icon": "list-check",
+        "description": "SCM registry",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "registry/overview",
+              "registry/structure"
+            ]
+          },
+          {
+            "group": "Component Structure",
+            "pages": [
+              "registry/component-structure",
+              "registry/metadata",
+              "registry/dependencies"
+            ]
+          },
+          {
+            "group": "Publishing",
+            "pages": [
+              "registry/publishing",
+              "registry/contributing",
+              "registry/guidelines",
+              "registry/workflow"
+            ]
+          }
+        ]
+      },
+      {
+        "dropdown": "Development",
+        "icon": "wrench",
+        "description": "Development",
+        "pages": [
+          "development/cli",
+          "development/web",
+          "development/registry"
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "GitHub",
+          "href": "https://github.com/Shadcn-Component-Manager",
+          "icon": "github"
+        },
+        {
+          "anchor": "Registry",
+          "href": "https://github.com/Shadcn-Component-Manager/registry",
+          "icon": "list-check"
+        },
+        {
+          "anchor": "CLI",
+          "href": "https://github.com/Shadcn-Component-Manager/scm",
+          "icon": "terminal"
+        },
+        {
+          "anchor": "Web App",
+          "href": "https://scm-registry.vercel.app",
+          "icon": "globe"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/logo.svg",
+    "dark": "/logo/logo.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Registry",
+        "href": "https://github.com/Shadcn-Component-Manager/registry"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "NPM CLI",
+      "href": "https://www.npmjs.com/package/@shadcn-component-manager/scm"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/Shadcn-Component-Manager"
+    }
+  }
+}

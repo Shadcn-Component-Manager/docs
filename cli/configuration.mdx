@@ -1,0 +1,118 @@
+---
+title: 'Configuration'
+description: 'Configure SCM for your project and global settings.'
+---
+
+# Configuration
+
+SCM uses a simple configuration system for authentication and project settings.
+
+## Authentication Configuration
+
+SCM stores authentication data:
+
+<CardGroup cols={2}>
+  <Card title="Location" icon="folder">
+    `~/.config/scm/config.json`
+  </Card>
+  <Card title="Content" icon="file-text">
+    GitHub access token
+  </Card>
+  <Card title="Permissions" icon="lock">
+    Restricted file permissions
+  </Card>
+</CardGroup>
+
+## Environment Variables
+
+SCM respects these environment variables:
+
+<CodeGroup>
+  <CodeGroupItem title="GitHub Token">
+    ```bash
+    GITHUB_TOKEN=your_github_token
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Registry URL">
+    ```bash
+    SCM_REGISTRY_URL=https://raw.githubusercontent.com/Shadcn-Component-Manager/registry/main/components
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Debug Mode">
+    ```bash
+    SCM_DEBUG=true
+    ```
+  </CodeGroupItem>
+</CodeGroup>
+
+## Project Integration
+
+SCM integrates with your existing project structure:
+
+<CardGroup cols={2}>
+  <Card title="Components Directory" icon="folder">
+    Uses `components/` by default
+  </Card>
+  <Card title="Package Managers" icon="package">
+    Supports npm, pnpm, yarn, bun
+  </Card>
+  <Card title="TypeScript" icon="code">
+    Full TypeScript support
+  </Card>
+  <Card title="shadcn/ui" icon="palette">
+    Compatible with shadcn/ui projects
+  </Card>
+</CardGroup>
+
+## Authentication Setup
+
+<Steps>
+  <Step title="Login">
+    ```bash
+    scm login
+    ```
+  </Step>
+  <Step title="Verify">
+    Try an authenticated command like `scm publish`
+  </Step>
+  <Step title="Start Creating">
+    ```bash
+    scm create my-component
+    ```
+  </Step>
+</Steps>
+
+## Registry Configuration
+
+<Tip>
+  The registry is configured to work with the official SCM registry
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="URL" icon="link">
+    https://raw.githubusercontent.com/Shadcn-Component-Manager/registry/main/components
+  </Card>
+  <Card title="Authentication" icon="key">
+    GitHub OAuth
+  </Card>
+  <Card title="Publishing" icon="upload">
+    GitHub pull request workflow
+  </Card>
+  <Card title="Discovery" icon="search">
+    CLI and web interface
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Add Components" href="/cli/add" icon="plus">
+    Install components
+  </Card>
+  <Card title="Create Components" href="/cli/create" icon="code">
+    Create your first component
+  </Card>
+  <Card title="Publish Components" href="/cli/publish" icon="upload">
+    Share your components
+  </Card>
+</CardGroup> 

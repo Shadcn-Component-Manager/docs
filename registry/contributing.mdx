@@ -1,0 +1,244 @@
+---
+title: 'Contributing Guidelines'
+description: 'How to contribute new components to the SCM registry using the CLI tool.'
+---
+
+# Contributing Guidelines
+
+SCM welcomes contributions from everyone! All contributions are made through the CLI tool with automated validation and publishing workflows.
+
+## How to Contribute
+
+<Steps>
+  <Step title="Install CLI">
+    Install the SCM CLI tool
+  </Step>
+  <Step title="Authenticate">
+    Run `scm login` to authenticate with GitHub
+  </Step>
+  <Step title="Create Component">
+    Use `scm create` to generate component structure
+  </Step>
+  <Step title="Develop & Test">
+    Customize component and test thoroughly
+  </Step>
+  <Step title="Publish">
+    Run `scm publish` to submit to registry
+  </Step>
+  <Step title="Auto-Merge">
+    Valid components are automatically merged
+  </Step>
+</Steps>
+
+## CLI Workflow
+
+<CardGroup cols={2}>
+  <Card title="Component Creation">
+    ```bash
+    scm create my-awesome-component
+    ```
+    Generates proper component structure
+  </Card>
+  <Card title="Development">
+    Edit files in the generated directory
+    Test in clean projects
+    Update metadata as needed
+  </Card>
+  <Card title="Publishing">
+    ```bash
+    scm publish
+    ```
+    Submits component to registry
+  </Card>
+  <Card title="Validation">
+    Automated checks validate structure
+    Auto-merge on success
+    Error feedback on failure
+  </Card>
+</CardGroup>
+
+## Quality Standards
+
+<CardGroup cols={2}>
+  <Card title="Code Quality">
+    - Use TypeScript for all components
+    - Follow component patterns
+    - Keep code modular and maintainable
+    - Use descriptive names
+  </Card>
+  <Card title="Documentation">
+    - Write clear component descriptions
+    - Document all props and variants
+    - Include usage examples
+    - Test thoroughly before publishing
+  </Card>
+  <Card title="Testing">
+    - Test in clean projects
+    - Ensure compatibility
+    - Check accessibility
+    - Fix all lint errors
+  </Card>
+  <Card title="Dependencies">
+    - Keep dependencies minimal
+    - Use semantic versioning
+    - Avoid breaking changes
+    - Test with all dependencies
+  </Card>
+</CardGroup>
+
+## Validation Requirements
+
+<CardGroup cols={2}>
+  <Card title="Required Fields">
+    - name, type, title, description
+    - Valid component type
+    - Semantic versioning
+  </Card>
+  <Card title="File Structure">
+    - All files must exist
+    - Proper file organization
+    - Valid file paths
+  </Card>
+  <Card title="Naming Rules">
+    - Lowercase with hyphens only
+    - No reserved names
+    - Valid characters: a-z, 0-9, -
+  </Card>
+  <Card title="Component Types">
+    - registry:component
+    - registry:block
+    - registry:hook
+    - registry:lib
+  </Card>
+</CardGroup>
+
+## Pre-Submission Checklist
+
+<CardGroup cols={2}>
+  <Card title="Component Quality">
+    - [ ] Component works in clean project
+    - [ ] All TypeScript errors resolved
+    - [ ] Linting passes without errors
+    - [ ] Documentation is complete
+  </Card>
+  <Card title="Metadata">
+    - [ ] `registry.json` is valid and complete
+    - [ ] Version is bumped appropriately
+    - [ ] Dependencies are correctly listed
+    - [ ] Categories are appropriate
+  </Card>
+  <Card title="Files">
+    - [ ] All files exist and are valid
+    - [ ] Files are organized in registry/ subdirectories
+    - [ ] Component file has correct extension
+    - [ ] Examples are working
+  </Card>
+  <Card title="Testing">
+    - [ ] Tested in multiple environments
+    - [ ] Accessibility audit completed
+    - [ ] Performance tested
+    - [ ] Error states handled
+  </Card>
+</CardGroup>
+
+## Common Issues
+
+<CardGroup cols={2}>
+  <Card title="Validation Failures">
+    **Issue:** Component validation failed
+    
+    **Solutions:**
+    - Check error messages for missing fields
+    - Fix issues in registry.json or component files
+    - Ensure all required files exist
+    - Verify file paths are correct
+  </Card>
+  <Card title="Permission Issues">
+    **Issue:** Permission denied during publish
+    
+    **Solutions:**
+    - Ensure you are authenticated (`scm login`)
+    - Check GitHub permissions
+    - Verify repository access
+    - Check token scopes
+  </Card>
+  <Card title="Reserved Names">
+    **Issue:** Component name is reserved
+    
+    **Solutions:**
+    - Choose a different component name
+    - Check the reserved names list
+    - Use descriptive, unique names
+  </Card>
+  <Card title="File Organization">
+    **Issue:** Files not found or improperly organized
+    
+    **Solutions:**
+    - Use `scm create` for proper structure
+    - Organize files in registry/ subdirectories
+    - Ensure all paths in registry.json are correct
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Before Contributing">
+    - Read all documentation thoroughly
+    - Understand the component patterns
+    - Test your component extensively
+    - Check for similar existing components
+  </Card>
+  <Card title="During Development">
+    - Use `scm create` for proper structure
+    - Follow established patterns
+    - Write comprehensive documentation
+    - Test in multiple environments
+  </Card>
+  <Card title="Before Publishing">
+    - Test your component thoroughly
+    - Write clear, helpful documentation
+    - Follow component patterns
+    - Check for reserved names
+  </Card>
+  <Card title="After Publishing">
+    - Monitor for issues
+    - Respond to user feedback
+    - Keep component updated
+    - Maintain documentation
+  </Card>
+</CardGroup>
+
+## Getting Help
+
+<CardGroup cols={2}>
+  <Card title="Documentation">
+    Check the documentation for guidelines
+  </Card>
+  <Card title="GitHub Issues">
+    Open an issue on GitHub for questions
+  </Card>
+  <Card title="CLI Help">
+    Use `scm --help` for command information
+  </Card>
+  <Card title="Examples">
+    Look at existing components for examples
+  </Card>
+</CardGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+  <Card title="Quality Guidelines" href="/registry/guidelines">
+    Quality standards for components
+  </Card>
+  <Card title="Publishing Workflow" href="/registry/publishing">
+    Publishing workflow
+  </Card>
+  <Card title="Component Structure" href="/registry/component-structure">
+    Required component structure
+  </Card>
+  <Card title="Metadata Format" href="/registry/metadata">
+    Registry.json format
+  </Card>
+</CardGroup> 

@@ -1,0 +1,127 @@
+---
+title: 'Create Command'
+description: 'Create new components with the scm create command.'
+---
+
+# Create Command
+
+Create a new component with proper structure and files.
+
+## Basic Usage
+
+```bash
+scm create <component-name>
+```
+
+## Example
+
+```bash
+scm create my-awesome-button
+```
+
+## What Happens
+
+<Steps>
+  <Step title="Validate Name">
+    Checks if component name is reserved
+  </Step>
+  <Step title="Create Directory">
+    Creates `components/<name>/` directory
+  </Step>
+  <Step title="Generate Files">
+    Creates `registry.json` and component file
+  </Step>
+  <Step title="Verify Structure">
+    Ensures proper file structure
+  </Step>
+</Steps>
+
+## Generated Structure
+
+```
+components/my-awesome-button/
+├── registry.json              # Component metadata
+└── my-awesome-button.tsx      # Main component file
+```
+
+## Generated Files
+
+### registry.json
+
+```json
+{
+  "name": "my-awesome-button",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "my-awesome-button.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
+```
+
+### Component File
+
+```tsx
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+export interface MyAwesomeButtonProps extends React.HTMLAttributes<HTMLDivElement> {
+  // Add your component props here
+}
+
+const MyAwesomeButton = React.forwardRef<HTMLDivElement, MyAwesomeButtonProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div
+        className={cn("", className)}
+        ref={ref}
+        {...props}
+      >
+        {/* Your component content */}
+        MyAwesomeButton
+      </div>
+    )
+  }
+)
+MyAwesomeButton.displayName = "MyAwesomeButton"
+
+export { MyAwesomeButton }
+```
+
+## Reserved Names
+
+<Callout>
+  Certain names are reserved to avoid conflicts with official shadcn/ui components.
+</Callout>
+
+**Reserved Names:**
+- button, card, dialog, input, form, label, select, textarea
+- checkbox, radio, switch, slider, utils, theme
+- All shadcn/ui component names
+
+## Next Steps
+
+<Steps>
+  <Step title="Customize">
+    Edit the generated files to match your needs
+  </Step>
+  <Step title="Test">
+    Test your component in a real project
+  </Step>
+  <Step title="Publish">
+    Run `scm publish` to publish to registry
+  </Step>
+</Steps>
+
+## Related Commands
+
+<CardGroup cols={2}>
+  <Card title="scm publish" href="/cli/publish">
+    Publish your component
+  </Card>
+  <Card title="scm add" href="/cli/add">
+    Install components
+  </Card>
+</CardGroup> 

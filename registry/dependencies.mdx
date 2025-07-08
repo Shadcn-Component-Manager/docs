@@ -1,0 +1,143 @@
+---
+title: 'Dependency Management'
+description: 'Learn how to manage dependencies for SCM components.'
+---
+
+# Dependency Management
+
+SCM components can depend on both npm packages and other registry components. Proper dependency management ensures compatibility and smooth installation.
+
+## NPM Dependencies
+
+<CardGroup cols={2}>
+  <Card title="List Dependencies">
+    List all required npm packages in `dependencies` in `registry.json`
+  </Card>
+  <Card title="Version Ranges">
+    Use semantic version ranges (e.g., `react@^18.0.0`)
+  </Card>
+  <Card title="Automatic Installation">
+    SCM CLI will install these automatically
+  </Card>
+  <Card title="Peer Dependencies">
+    Use peer dependencies for shared libraries
+  </Card>
+</CardGroup>
+
+## Registry Dependencies
+
+<CardGroup cols={2}>
+  <Card title="List Registry Dependencies">
+    List other SCM components in `registryDependencies`
+  </Card>
+  <Card title="Recursive Installation">
+    These will be installed recursively
+  </Card>
+  <Card title="Avoid Circular Dependencies">
+    Avoid circular dependencies between components
+  </Card>
+  <Card title="Version Compatibility">
+    Ensure compatible versions between components
+  </Card>
+</CardGroup>
+
+## Example
+
+```json
+{
+  "dependencies": ["react@^18.0.0", "lucide-react@^0.3.0"],
+  "registryDependencies": ["button", "card"]
+}
+```
+
+## Versioning
+
+<CardGroup cols={2}>
+  <Card title="Semantic Versioning">
+    Use semantic versioning for all dependencies
+  </Card>
+  <Card title="Minimum Versions">
+    Specify minimum compatible versions
+  </Card>
+  <Card title="Test Compatibility">
+    Test your component with all dependencies
+  </Card>
+  <Card title="Update Regularly">
+    Keep dependencies up to date
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Minimal Dependencies">
+    - Keep dependencies minimal and up to date
+    - Avoid unnecessary peer dependencies
+    - Document required dependencies in your README
+    - Test installation in a clean project
+  </Card>
+  <Card title="Version Management">
+    - Use caret ranges for minor updates
+    - Use tilde ranges for patch updates
+    - Pin major versions when needed
+    - Test with multiple version combinations
+  </Card>
+  <Card title="Documentation">
+    - Clearly document all dependencies
+    - Explain why each dependency is needed
+    - Provide alternative options when possible
+    - Include setup instructions
+  </Card>
+  <Card title="Testing">
+    - Test with different dependency versions
+    - Verify compatibility with target environments
+    - Test installation in clean projects
+    - Validate functionality after updates
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Install Errors">
+    **Issue:** Failed to install dependencies
+    
+    **Solutions:**
+    - Check for conflicting versions in your project
+    - Use `--force` to refresh the cache
+    - Manually resolve version conflicts
+    - Check for peer dependency issues
+  </Card>
+  <Card title="Missing Dependencies">
+    **Issue:** Missing dependencies after installation
+    
+    **Solutions:**
+    - Ensure all dependencies are listed in `registry.json`
+    - Check for typos in dependency names
+    - Verify version ranges are correct
+    - Run `npm install` manually if needed
+  </Card>
+  <Card title="Circular Dependencies">
+    **Issue:** Circular dependency detected
+    
+    **Solutions:**
+    - Refactor to avoid circular dependencies
+    - Use dependency injection patterns
+    - Split components into smaller pieces
+    - Review component architecture
+  </Card>
+</CardGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+  <Card title="Component Structure" href="/registry/component-structure">
+    Component structure guide
+  </Card>
+  <Card title="Quality Guidelines" href="/registry/guidelines">
+    Quality guidelines
+  </Card>
+  <Card title="Metadata Format" href="/registry/metadata">
+    Registry.json format
+  </Card>
+</CardGroup> 

@@ -1,0 +1,122 @@
+---
+title: 'Add Components'
+description: 'Install components from the SCM registry into your project.'
+---
+
+# Add Components
+
+Install components from the registry into your project.
+
+## Basic Usage
+
+```bash
+# Install latest version
+scm add username/component-name
+
+# Install specific version
+scm add username/component-name@1.0.0
+
+# Force refresh cache
+scm add username/component-name --force
+```
+
+## Examples
+
+```bash
+# Install a button component
+scm add johndoe/awesome-button
+
+# Install with specific version
+scm add johndoe/awesome-button@2.1.0
+
+# Force reinstall
+scm add johndoe/awesome-button --force
+```
+
+## What Happens
+
+<Steps>
+  <Step title="Validate Name">
+    Checks if component name is reserved
+  </Step>
+  <Step title="Fetch Component">
+    Downloads component files from registry
+  </Step>
+  <Step title="Install Dependencies">
+    Installs required NPM packages
+  </Step>
+  <Step title="Copy Files">
+    Copies files to your project structure
+  </Step>
+  <Step title="Apply CSS Variables">
+    Adds component CSS variables to your styles
+  </Step>
+</Steps>
+
+## Reserved Component Names
+
+If you try to install a reserved component name (like `button`, `card`, etc.), SCM automatically redirects to the official shadcn/ui component:
+
+```bash
+scm add button
+# Redirects to: npx shadcn@latest add button
+```
+
+## Dependencies
+
+SCM automatically installs:
+
+<CardGroup cols={2}>
+  <Card title="NPM Dependencies">
+    Required npm packages listed in component metadata
+  </Card>
+  <Card title="Registry Dependencies">
+    Other SCM components the component depends on
+  </Card>
+</CardGroup>
+
+## File Structure
+
+Components are installed to your project's component directory:
+
+```
+components/
+├── ui/
+│   └── component-name.tsx    # Main component
+├── hooks/
+│   └── use-component.ts      # Custom hooks
+└── lib/
+    └── component-utils.ts    # Utilities
+```
+
+## Requirements
+
+- `components.json` file (from shadcn/ui setup)
+- Valid component name in registry
+- Internet connection for downloads
+
+## Troubleshooting
+
+**Component not found:**
+```bash
+# Search for similar components
+scm search component-name
+
+# Check if component exists
+scm preview username/component-name
+```
+
+**Installation fails:**
+```bash
+# Clear cache and retry
+scm add component --force
+
+# Check dependencies manually
+npm install
+```
+
+## Next Steps
+
+- [Search Components](/cli/search) - Find components to install
+- [Update Components](/cli/update) - Keep components up to date
+- [Create Components](/cli/create) - Build your own components 

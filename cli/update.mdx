@@ -1,0 +1,128 @@
+---
+title: 'Update Components'
+description: 'Update installed components to their latest versions.'
+---
+
+# Update Components
+
+Update installed components to their latest versions.
+
+## Basic Usage
+
+```bash
+# Update all components
+scm update
+
+# Update specific component
+scm update username/component-name
+
+# Check for updates (dry run)
+scm update --dry-run
+```
+
+## Examples
+
+```bash
+# Update all components
+scm update
+
+# Update specific component
+scm update johndoe/awesome-button
+
+# Check what would be updated
+scm update --dry-run
+
+# Force update even if no newer version
+scm update --force
+```
+
+## What Happens
+
+<Steps>
+  <Step title="Check Versions">
+    Compares installed versions with latest available
+  </Step>
+  <Step title="Download Updates">
+    Downloads updated component files
+  </Step>
+  <Step title="Install Dependencies">
+    Installs new dependencies if needed
+  </Step>
+  <Step title="Update Files">
+    Replaces old files with updated versions
+  </Step>
+  <Step title="Track Changes">
+    Updates tracking information
+  </Step>
+</Steps>
+
+## Example Output
+
+```bash
+$ scm update
+🔍 Checking for component updates...
+✅ Found 2 installed components
+
+📈 Found 1 components with updates:
+  johndoe/awesome-button: 1.0.0 → 1.1.0
+
+✅ Updated johndoe/awesome-button to 1.1.0
+```
+
+## Options
+
+```bash
+# Force update even if no newer version available
+scm update --force
+
+# Show what would be updated without making changes
+scm update --dry-run
+
+# Update specific component
+scm update username/component-name
+```
+
+## Version Tracking
+
+SCM tracks installed components in `.scm-installed.json`:
+
+```json
+{
+  "johndoe/awesome-button": {
+    "version": "1.1.0",
+    "installedAt": "2024-01-15T10:30:00.000Z"
+  }
+}
+```
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Update Fails">
+    **Issue:** Update fails with errors
+    
+    **Solutions:**
+    - Clear cache: `scm add component --force`
+    - Check dependencies: `npm install`
+    - Verify component exists: `scm preview component`
+  </Card>
+  <Card title="Version Conflicts">
+    **Issue:** Version conflicts with dependencies
+    
+    **Solutions:**
+    - Update dependencies: `npm update`
+    - Check compatibility
+    - Contact component author
+  </Card>
+</CardGroup>
+
+## Related Commands
+
+<CardGroup cols={2}>
+  <Card title="scm add" href="/cli/add">
+    Install components
+  </Card>
+  <Card title="scm preview" href="/cli/preview">
+    Preview component details
+  </Card>
+</CardGroup> 

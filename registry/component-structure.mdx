@@ -1,0 +1,177 @@
+---
+title: 'Component Structure'
+description: 'Understand the required structure for components in the SCM registry.'
+---
+
+# Component Structure
+
+Components in the SCM registry must follow a specific structure that's validated by automated workflows.
+
+## Required Structure
+
+```
+components/username/component-name/1.0.0/
+├── registry.json              # Component metadata (required)
+└── registry/                  # Component files (required)
+    ├── components/            # React components
+    ├── hooks/                 # Custom hooks
+    ├── lib/                   # Utilities and types
+    └── ...                    # Other file types
+```
+
+## File Descriptions
+
+<CardGroup cols={2}>
+  <Card title="registry.json">
+    Metadata describing the component, dependencies, and version
+  </Card>
+  <Card title="registry/components/">
+    React component files with proper TypeScript types
+  </Card>
+  <Card title="registry/hooks/">
+    Custom React hooks for component logic
+  </Card>
+  <Card title="registry/lib/">
+    Utility functions, types, and configuration
+  </Card>
+</CardGroup>
+
+## Validation Requirements
+
+<CardGroup cols={2}>
+  <Card title="Required Fields">
+    - name, type, title, description
+    - All files must exist
+    - Valid component type
+  </Card>
+  <Card title="Naming Rules">
+    - Lowercase with hyphens only
+    - No reserved names
+    - Valid characters: a-z, 0-9, -
+  </Card>
+  <Card title="Component Types">
+    - registry:component
+    - registry:block
+    - registry:hook
+    - registry:lib
+  </Card>
+  <Card title="Version Format">
+    - Semantic versioning (e.g., 1.0.0)
+    - Must match directory name
+  </Card>
+</CardGroup>
+
+## Example Structure
+
+```
+components/BankkRoll/supachat/1.0.0/
+├── registry.json
+└── registry/
+    ├── components/
+    │   ├── chat-widget.tsx
+    │   ├── admin-panel.tsx
+    │   └── message-bubble.tsx
+    ├── hooks/
+    │   ├── use-chat.ts
+    │   └── use-admin.ts
+    ├── lib/
+    │   ├── types.ts
+    │   └── config.ts
+    └── supabase/
+        ├── client.ts
+        └── server.ts
+```
+
+## File Organization
+
+### Components Directory
+
+```
+registry/components/
+├── MyComponent.tsx          # Main component
+├── MyComponentVariant.tsx   # Component variants
+└── index.ts                 # Export file
+```
+
+### Hooks Directory
+
+```
+registry/hooks/
+├── useMyComponent.ts        # Main hook
+├── useMyComponentState.ts   # State management
+└── index.ts                 # Export file
+```
+
+### Library Directory
+
+```
+registry/lib/
+├── types.ts                 # TypeScript types
+├── utils.ts                 # Utility functions
+├── config.ts                # Configuration
+└── constants.ts             # Constants
+```
+
+## Validation Rules
+
+<CardGroup cols={2}>
+  <Card title="Name Validation">
+    - Must be in kebab-case format
+    - Cannot be a reserved component name
+    - Must be unique within your namespace
+    - Only lowercase letters, numbers, and hyphens
+  </Card>
+  <Card title="File Validation">
+    - All files listed in registry.json must exist
+    - File paths must be relative to component root
+    - Component file must have proper extension
+  </Card>
+  <Card title="Type Validation">
+    - Must be one of: registry:component, registry:block, registry:hook, registry:lib
+    - Type must match file organization
+  </Card>
+  <Card title="Version Validation">
+    - Must follow semantic versioning (e.g., 1.0.0)
+    - Cannot be 0.0.0
+    - Must be greater than previous versions
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Naming">
+    - Use descriptive, unique names
+    - Follow kebab-case convention
+    - Check for reserved names before creating
+  </Card>
+  <Card title="Organization">
+    - Keep files organized by type in registry/
+    - Use semantic versioning for updates
+    - Group related files together
+  </Card>
+  <Card title="Documentation">
+    - Write clear component descriptions
+    - Include usage examples
+    - Document all props and variants
+  </Card>
+  <Card title="Dependencies">
+    - List all required dependencies
+    - Use semantic versioning
+    - Keep dependencies minimal
+  </Card>
+</CardGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+  <Card title="Metadata Format" href="/registry/metadata">
+    Learn about registry.json format
+  </Card>
+  <Card title="Dependency Management" href="/registry/dependencies">
+    Dependency management
+  </Card>
+  <Card title="Quality Guidelines" href="/registry/guidelines">
+    Quality guidelines
+  </Card>
+</CardGroup> 

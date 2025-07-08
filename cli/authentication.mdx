@@ -1,0 +1,113 @@
+---
+title: 'Authentication'
+description: 'Authenticate with GitHub to use SCM CLI features.'
+---
+
+# Authentication
+
+SCM uses GitHub OAuth device flow for secure authentication.
+
+## Login
+
+```bash
+scm login
+```
+
+<Note>
+  **What happens:**
+  - Opens browser for GitHub authorization
+  - Requests necessary permissions (repo, read:user, user:email)
+  - Stores token securely in `~/.config/scm/config.json`
+</Note>
+
+## Logout
+
+```bash
+scm logout
+```
+
+Removes stored authentication token.
+
+## OAuth Flow
+
+<Steps>
+  <Step title="Request Authorization">
+    SCM generates device authorization code
+  </Step>
+  <Step title="Browser Authorization">
+    Opens browser to GitHub authorization page
+  </Step>
+  <Step title="Token Exchange">
+    Exchanges authorization code for access token
+  </Step>
+  <Step title="Store Token">
+    Securely stores token for future use
+  </Step>
+</Steps>
+
+## Required Permissions
+
+SCM requests these GitHub scopes:
+
+<CardGroup cols={2}>
+  <Card title="read:user" icon="user">
+    Read your profile information
+  </Card>
+  <Card title="user:email" icon="mail">
+    Read your email addresses
+  </Card>
+  <Card title="repo" icon="github">
+    Full repository access for publishing
+  </Card>
+</CardGroup>
+
+## Storage
+
+<CardGroup cols={2}>
+  <Card title="Location" icon="folder">
+    `~/.config/scm/config.json`
+  </Card>
+  <Card title="Security" icon="shield">
+    Token stored in plain text (standard for CLI tools)
+  </Card>
+  <Card title="Permissions" icon="lock">
+    File has restrictive permissions
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Login fails" icon="alert-triangle">
+    ```bash
+    scm logout
+    scm login
+    ```
+  </Accordion>
+  
+  <Accordion title="Token expired" icon="clock">
+    ```bash
+    scm login
+    ```
+  </Accordion>
+  
+  <Accordion title="Permission denied" icon="x-circle">
+    - Check GitHub account permissions
+    - Ensure internet connection
+    - Try different browser
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Configuration" href="/cli/configuration" icon="settings">
+    Set up project configuration
+  </Card>
+  <Card title="Add Components" href="/cli/add" icon="plus">
+    Install your first component
+  </Card>
+  <Card title="Publish Components" href="/cli/publish" icon="upload">
+    Share your components
+  </Card>
+</CardGroup> 

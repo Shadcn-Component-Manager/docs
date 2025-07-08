@@ -1,0 +1,132 @@
+---
+title: 'Preview Command'
+description: 'Preview component details and documentation.'
+---
+
+# Preview Command
+
+Preview component details, documentation, and metadata before installing.
+
+## Basic Usage
+
+```bash
+scm preview user/component
+```
+
+## Options
+
+```bash
+# Preview specific version
+scm preview user/component --version 1.0.0
+```
+
+## Preview Information
+
+<CardGroup cols={2}>
+  <Card title="Component Metadata">
+    - Name, author, and version
+    - Description and categories
+    - File structure and types
+  </Card>
+  <Card title="Dependencies">
+    - NPM dependencies with versions
+    - Registry dependencies
+    - Installation requirements
+  </Card>
+  <Card title="Documentation">
+    - README content
+    - Usage examples
+    - Setup instructions
+  </Card>
+  <Card title="Installation">
+    - Installation command
+    - CSS variables (if defined)
+  </Card>
+</CardGroup>
+
+## Example Output
+
+```bash
+$ scm preview user/button
+📦 Fetching user/button...
+✅ Fetched user/button
+
+My Awesome Button
+by user
+Version: 1.0.0
+Type: registry:ui
+
+A beautiful and customizable button component
+
+Categories: ui, button, interactive
+
+Dependencies: react@^18.0.0, lucide-react@^0.3.0
+
+📖 README:
+──────────────────────────────────────────────────
+# My Awesome Button
+
+A customizable button component with multiple variants...
+
+📁 Files:
+  1. Button.tsx (registry:ui)
+
+💡 To install this component, run: scm add user/button@1.0.0
+```
+
+## Version Preview
+
+```bash
+# Preview latest version
+scm preview user/component
+
+# Preview specific version
+scm preview user/component --version 1.0.0
+```
+
+## Use Cases
+
+<CardGroup cols={2}>
+  <Card title="Before Installation">
+    - Review component details
+    - Check dependencies
+    - Understand functionality
+  </Card>
+  <Card title="Component Research">
+    - Compare similar components
+    - Evaluate quality
+    - Check maintenance status
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Component Not Found">
+    **Issue:** Component not found in registry
+    
+    **Solutions:**
+    - Check component name and namespace
+    - Use `scm search <term>` to find available components
+    - Verify the component is published
+  </Card>
+  <Card title="Version Not Found">
+    **Issue:** Specific version not available
+    
+    **Solutions:**
+    - Check available versions
+    - Use latest version instead
+    - Contact component author
+  </Card>
+</CardGroup>
+
+## Related Commands
+
+<CardGroup cols={2}>
+  <Card title="scm search" href="/cli/search">
+    Find components to preview
+  </Card>
+  <Card title="scm add" href="/cli/add">
+    Install components after preview
+  </Card>
+</CardGroup> 

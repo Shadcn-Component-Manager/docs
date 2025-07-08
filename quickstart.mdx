@@ -1,0 +1,96 @@
+---
+title: 'Quick Start'
+description: 'Get up and running with SCM in minutes. Install the CLI, authenticate, and start using components.'
+---
+
+# Quick Start
+
+Get started with SCM in under 5 minutes.
+
+## Prerequisites
+
+<CardGroup cols={2}>
+  <Card title="Node.js" icon="nodejs">
+    Node.js 18.0.0 or higher
+  </Card>
+  <Card title="Git" icon="git">
+    Git configured with GitHub
+  </Card>
+  <Card title="GitHub Account" icon="github">
+    GitHub account for authentication
+  </Card>
+</CardGroup>
+
+## Installation
+
+```bash
+npm install -g @shadcn-component-manager/scm
+```
+
+## Authentication
+
+```bash
+scm login
+```
+
+<Note>
+  This opens your browser for GitHub OAuth authentication.
+</Note>
+
+## Basic Usage
+
+<Steps>
+  <Step title="Browse Components">
+    ```bash
+    scm browse
+    ```
+  </Step>
+  <Step title="Search Components">
+    ```bash
+    scm search button
+    ```
+  </Step>
+  <Step title="Install Component">
+    ```bash
+    scm add username/component-name
+    ```
+  </Step>
+  <Step title="List Installed">
+    ```bash
+    scm list
+    ```
+  </Step>
+  <Step title="Update Components">
+    ```bash
+    scm update
+    ```
+  </Step>
+</Steps>
+
+## Using Components
+
+```tsx
+import { MyComponent } from "@/components/ui/my-component"
+
+export default function App() {
+  return <MyComponent />
+}
+```
+
+## Web Interface
+
+<Tip>
+  Visit [scm-registry.vercel.app](https://scm-registry.vercel.app) to:
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Browse Visually" icon="eye">
+    Browse components in a visual grid layout
+  </Card>
+  <Card title="Preview Components" icon="play">
+    Preview components before installing
+  </Card>
+  <Card title="Copy Commands" icon="copy">
+    Copy installation commands
+  </Card>
+</CardGroup>

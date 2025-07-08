@@ -1,0 +1,256 @@
+---
+title: 'SCM Registry Development'
+description: 'Set up the SCM registry locally for development and contribution.'
+---
+
+# SCM Registry Development
+
+GitHub-based repository for community-created components with automated workflows.
+
+## Tech Stack
+
+<CardGroup cols={2}>
+  <Card title="Platform">
+    GitHub Repository
+  </Card>
+  <Card title="Automation">
+    GitHub Actions
+  </Card>
+  <Card title="Index">
+    Auto-generated JSON
+  </Card>
+  <Card title="License">
+    MIT License
+  </Card>
+</CardGroup>
+
+<Card title="Components">
+  Community-contributed
+</Card>
+
+## Prerequisites
+
+- Node.js 18+
+- Git with GitHub account
+- SCM CLI tool
+
+## Setup
+
+```bash
+git clone https://github.com/Shadcn-Component-Manager/registry.git
+cd registry
+```
+
+## Project Structure
+
+```
+registry/
+├── registry.json                    # Auto-generated index
+├── components/                      # Component storage
+│   ├── {username}/                 # User namespace
+│   │   ├── {component}/           # Component directory
+│   │   │   └── {version}/         # Version directory
+│   │   │       ├── registry.json  # Component metadata
+│   │   │       └── registry/      # Component files
+└── .github/workflows/              # GitHub Actions
+    └── component-pipeline.yml      # Automated validation
+```
+
+## Development Workflow
+
+### Adding Components
+
+<Steps>
+  <Step title="Install CLI">
+    ```bash
+    npm install -g @shadcn-component-manager/scm
+    ```
+  </Step>
+  <Step title="Authenticate">
+    ```bash
+    scm login
+    ```
+  </Step>
+  <Step title="Create Component">
+    ```bash
+    scm create my-component
+    ```
+  </Step>
+  <Step title="Develop & Test">
+    Customize component
+  </Step>
+  <Step title="Publish">
+    ```bash
+    scm publish
+    ```
+  </Step>
+</Steps>
+
+## GitHub Actions Workflow
+
+### Validation Process
+
+<CardGroup cols={2}>
+  <Card title="Structure">
+    - registry.json format
+    - Component metadata
+    - File organization
+  </Card>
+  <Card title="Naming">
+    - Lowercase with hyphens
+    - No reserved names
+    - Valid characters: a-z, 0-9, -
+  </Card>
+</CardGroup>
+
+<Card title="Auto-Merge">
+  - Valid PRs auto-merged
+  - Index updated
+  - Branches cleaned up
+</Card>
+
+### Workflow Triggers
+
+- Pull requests: opened, synchronize, reopened, closed
+- Branches: main, develop
+
+## Registry Index
+
+Auto-generated `registry.json`:
+
+```json
+[
+  {
+    "name": "username/component",
+    "description": "Component description",
+    "author": "Author Name",
+    "categories": ["ui", "button"],
+    "version": "1.0.0",
+    "lastUpdated": "2024-01-15T10:30:00.000Z"
+  }
+]
+```
+
+### Index Generation
+
+1. Scan components directory
+2. Read metadata from registry.json files
+3. Validate component metadata
+4. Generate searchable index
+5. Update repository
+
+## Quality Standards
+
+<CardGroup cols={2}>
+  <Card title="Code Quality">
+    - Valid structure and metadata
+    - TypeScript support
+    - Comprehensive documentation
+    - Tested functionality
+  </Card>
+  <Card title="Dependencies">
+    - Proper dependency management
+    - No naming conflicts
+    - Semantic versioning
+    - Compatibility tested
+  </Card>
+</CardGroup>
+
+## Reserved Names
+
+<CardGroup cols={2}>
+  <Card title="Core UI">
+    - button, card, dialog, input
+    - form, label, select, textarea
+    - checkbox, radio, switch, slider, ect...
+  </Card>
+  <Card title="Utilities">
+    - utils, use-mobile, theme
+    - dashboard-01, sidebar-01
+    - chart-area-default, calendar-01, ect...
+  </Card>
+</CardGroup>
+
+## Local Testing
+
+### Manual Validation
+
+```bash
+# Validate registry.json structure
+node -e "
+  const fs = require('fs');
+  try {
+    const registry = JSON.parse(fs.readFileSync('registry.json', 'utf8'));
+    if (!Array.isArray(registry)) {
+      console.error('❌ registry.json must be an array');
+      process.exit(1);
+    }
+    console.log(\`✅ registry.json is valid with \${registry.length} components\`);
+  } catch (error) {
+    console.error('❌ registry.json is not valid JSON:', error.message);
+    process.exit(1);
+  }
+"
+```
+
+### Component Validation
+
+```bash
+# Validate component structure
+find components -name "registry.json" -exec sh -c '
+  echo "🔍 Validating $1"
+  node -e "
+    const fs = require(\"fs\");
+    const metadata = JSON.parse(fs.readFileSync(\"$1\", \"utf8\"));
+    const required = [\"name\", \"type\", \"title\", \"description\"];
+    for (const field of required) {
+      if (!metadata[field]) {
+        console.error(\`❌ Missing required field: \${field}\`);
+        process.exit(1);
+      }
+    }
+    console.log(\`✅ \${metadata.name} is valid\`);
+  "
+' _ {} \;
+```
+
+## Registry API
+
+<Card title="Component Metadata">
+  ```json
+  GET /components/{username}/{component}/registry.json
+  ```
+</Card>
+<Card title="Component Files">
+  ```json
+  GET /components/{username}/{component}/{version}/{filename}
+  ```
+</Card>
+<Card title="Search Index">
+  ```json
+  GET /registry.json
+  ```
+</Card>
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Component Not Appearing">
+    Check PR merge status and structure
+  </Card>
+  <Card title="Validation Failures">
+    Review GitHub Actions logs
+  </Card>
+  <Card title="Dependency Conflicts">
+    Check version compatibility
+  </Card>
+  <Card title="Workflow Issues">
+    Verify trigger conditions and permissions
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<Card title="Registry Guide" href="/registry/overview">
+  Learn registry
+</Card>

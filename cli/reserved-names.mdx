@@ -1,0 +1,89 @@
+---
+title: 'Reserved Component Names'
+description: 'Learn about reserved component names in SCM.'
+---
+
+# Reserved Component Names
+
+Certain component names are reserved to avoid conflicts with official shadcn/ui components.
+
+## What Are Reserved Names?
+
+Reserved names are protected to ensure compatibility and prevent accidental overwrites of official components.
+
+## How SCM Handles Reserved Names
+
+<CardGroup cols={3}>
+  <Card title="Installation">
+    If you run `scm add button`, SCM redirects to the official component
+  </Card>
+  <Card title="Creation">
+    If you try to create a reserved name, SCM blocks the operation
+  </Card>
+  <Card title="Publishing">
+    Reserved names cannot be published to the registry by users
+  </Card>
+</CardGroup>
+
+## Example Output
+
+```bash
+scm create button
+❌ Component name "button" is reserved
+This name conflicts with an existing shadcn/ui component
+Please choose a different name for your component
+```
+
+## Reserved Names Categories
+
+<CardGroup cols={2}>
+  <Card title="Core UI Components">
+    - button, card, dialog, input
+    - form, label, select, textarea
+    - checkbox, radio, switch, slider
+    - accordion, alert, avatar, badge
+    - breadcrumb, calendar, carousel, chart
+    - collapsible, command, context-menu
+    - data-table, date-picker, drawer
+    - dropdown-menu, hover-card, menubar
+    - navigation-menu, pagination, popover
+    - progress, resizable, scroll-area
+    - separator, sheet, skeleton, sonner
+    - table, tabs, toast, toggle, tooltip
+  </Card>
+  <Card title="Utility Components">
+    - utils, use-mobile, theme
+    - dashboard-01, sidebar-01 through sidebar-16
+    - login-01 through login-05
+    - calendar-01 through calendar-32, calendar-hijri
+    - chart-area-*, chart-bar-*, chart-line-*
+    - chart-pie-*, chart-radar-*, chart-radial-*
+    - chart-tooltip-*
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Naming">
+    - Use descriptive, unique names for your components
+    - Avoid using names that conflict with official components
+    - Check the reserved names list before creating or publishing
+  </Card>
+  <Card title="Alternatives">
+    - Use prefixes: `my-button`, `custom-button`
+    - Use suffixes: `button-variant`, `button-enhanced`
+    - Use descriptive names: `primary-button`, `animated-button`
+  </Card>
+</CardGroup>
+
+## Related Commands
+
+<CardGroup cols={2}>
+  <Card title="scm create">
+    Create a new component
+  </Card>
+  <Card title="scm add">
+    Install official components
+  </Card>
+</CardGroup> 

@@ -1,0 +1,221 @@
+---
+title: 'SCM Web Development'
+description: 'Set up the SCM web locally for development and contribution.'
+---
+
+# SCM Web Development
+
+Next.js application for browsing and managing SCM components.
+
+## Tech Stack
+
+<CardGroup cols={2}>
+  <Card title="Framework">
+    Next.js
+  </Card>
+  <Card title="Language">
+    TypeScript
+  </Card>
+  <Card title="UI Library">
+    React
+  </Card>
+  <Card title="Styling">
+    Tailwind CSS
+  </Card>
+  <Card title="Components">
+    Radix UI + shadcn/ui
+  </Card>
+  <Card title="Package Manager">
+    pnpm
+  </Card>
+</CardGroup>
+
+## Prerequisites
+
+- Node.js 18+
+- Git with GitHub account
+- pnpm (recommended)
+
+## Setup
+
+```bash
+git clone https://github.com/Shadcn-Component-Manager/web.git
+cd web
+pnpm install
+```
+
+## Project Structure
+
+```
+web/
+├── src/
+│   ├── app/                 # Next.js app directory
+│   │   ├── (auth)/          # Authentication routes
+│   │   ├── (marketing)/     # Public pages
+│   │   ├── (user)/          # User dashboard
+│   │   └── api/             # API routes
+│   ├── components/          # React components
+│   │   ├── ui/              # UI components
+│   │   ├── layout/          # Layout components
+│   │   └── shared/          # Shared components
+│   ├── hooks/               # Custom hooks
+│   └── lib/                 # Utilities
+├── public/                  # Static assets
+└── components.json          # shadcn/ui config
+```
+
+## Environment Setup
+
+Create `.env.local`:
+
+```env
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GITHUB_TOKEN=your_github_access_token
+NEXT_PUBLIC_GITHUB_CLIENT_ID=your_github_client_id
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+## Development Commands
+
+<CardGroup cols={2}>
+  <Card title="Dev Server">
+    ```bash
+    pnpm dev
+    ```
+  </Card>
+  <Card title="Turbo Mode">
+    ```bash
+    pnpm dev:turbo
+    ```
+  </Card>
+  <Card title="Build">
+    ```bash
+    pnpm build
+    ```
+  </Card>
+  <Card title="Start">
+    ```bash
+    pnpm start
+    ```
+  </Card>
+  <Card title="Lint">
+    ```bash
+    pnpm lint
+    ```
+  </Card>
+  <Card title="Format">
+    ```bash
+    pnpm format
+    ```
+  </Card>
+</CardGroup>
+
+## Key Dependencies
+
+<CardGroup cols={2}>
+  <Card title="Core">
+    - next: React framework
+    - react: UI library
+    - typescript: Type safety
+  </Card>
+  <Card title="UI">
+    - @radix-ui/*: Headless UI
+    - lucide-react: Icons
+    - tailwindcss: Styling
+  </Card>
+  <Card title="Data">
+    - @octokit/rest: GitHub API
+    - react-hook-form: Forms
+    - zod: Validation
+  </Card>
+  <Card title="Dev">
+    - eslint: Linting
+    - prettier: Formatting
+  </Card>
+</CardGroup>
+
+## Adding Pages
+
+1. Create directory in `src/app/`
+2. Add `page.tsx`
+3. Add `layout.tsx` (optional)
+4. Test route
+
+## Adding Components
+
+1. Create file in `src/components/`
+2. Add TypeScript interfaces
+3. Use Tailwind CSS classes
+4. Export if needed
+
+```typescript
+import { cn } from "@/lib/utils"
+
+interface MyComponentProps {
+  title: string
+  className?: string
+}
+
+export function MyComponent({ title, className }: MyComponentProps) {
+  return (
+    <div className={cn("p-4", className)}>
+      <h2>{title}</h2>
+    </div>
+  )
+}
+```
+
+## Testing
+
+```bash
+# Run tests
+pnpm test
+
+# Watch mode
+pnpm test:watch
+```
+
+## Build Process
+
+- Fast refresh (dev)
+- Static optimization (prod)
+- Code splitting
+- Image optimization
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Connect repository
+2. Configure environment variables
+3. Deploy automatically
+
+### Other Platforms
+
+- Netlify: Configure build command
+- Railway: Use Dockerfile
+- Self-hosted: Build and serve
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Port in Use">
+    Kill process or use different port
+  </Card>
+  <Card title="Env Variables">
+    Check .env.local and restart server
+  </Card>
+  <Card title="OAuth Issues">
+    Verify callback URL and scopes
+  </Card>
+  <Card title="Build Errors">
+    Clear .next cache and reinstall
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<Card title="Web Guide" href="/web/overview">
+  Learn Web
+</Card>

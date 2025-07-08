@@ -1,0 +1,107 @@
+---
+title: 'Login Command'
+description: 'Authenticate with SCM using GitHub OAuth device flow.'
+---
+
+# Login Command
+
+Authenticate with SCM using GitHub OAuth device flow.
+
+## Basic Usage
+
+```bash
+scm login
+```
+
+## Options
+
+```bash
+# Force re-authentication
+scm login --force
+```
+
+## Authentication Flow
+
+<Steps>
+  <Step title="Request Authorization">
+    SCM generates device authorization code
+  </Step>
+  <Step title="Browser Authorization">
+    Opens browser to GitHub authorization page
+  </Step>
+  <Step title="Token Exchange">
+    Exchanges authorization code for access token
+  </Step>
+  <Step title="Store Token">
+    Securely stores token for future use
+  </Step>
+</Steps>
+
+## Example Output
+
+```bash
+$ scm login
+🔐 Starting GitHub OAuth device flow...
+🔄 Requesting device authorization...
+✅ Device authorization requested
+
+🔗 Please visit this URL to authorize SCM:
+🌐 https://github.com/login/device
+📝 Enter this code: ABC-DEF-GHI
+
+⏳ Waiting for authorization...
+✅ Authentication successful!
+```
+
+## Required Scopes
+
+SCM requests these GitHub scopes:
+
+<CardGroup cols={2}>
+  <Card title="read:user">
+    Read your profile information
+  </Card>
+  <Card title="user:email">
+    Read your email addresses
+  </Card>
+  <Card title="repo">
+    Full repository access for publishing
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Browser Issues">
+    **Issue:** Browser doesn't open automatically
+    
+    **Solution:** Copy the URL and open manually
+  </Card>
+  <Card title="Authorization Fails">
+    **Issue:** Authorization code invalid
+    
+    **Solution:** Make sure you copied the entire code
+  </Card>
+</CardGroup>
+
+## Related Commands
+
+- **`scm logout`**: Clear stored credentials
+- **`scm publish`**: Publish components (requires authentication)
+
+## Next Steps
+
+After successful login:
+
+<CardGroup cols={2}>
+  <Card title="Create a component">
+    ```bash
+    scm create my-component
+    ```
+  </Card>
+  <Card title="Publish to registry">
+    ```bash
+    scm publish
+    ```
+  </Card>
+</CardGroup> 

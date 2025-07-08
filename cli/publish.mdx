@@ -1,0 +1,187 @@
+---
+title: 'Publish Command'
+description: 'Publish your component to the SCM registry.'
+---
+
+# Publish Command
+
+Publish a component to the SCM registry with automatic versioning.
+
+## Basic Usage
+
+```bash
+scm publish
+```
+
+Run this command from your component directory (where `registry.json` is located).
+
+## Options
+
+```bash
+# Skip confirmation prompts
+scm publish --yes
+
+# Custom commit message
+scm publish --message "feat: add new button variant"
+
+# Specific item from registry collection
+scm publish --item my-component
+```
+
+## Publishing Workflow
+
+<Steps>
+  <Step title="Validate">
+    Validates component structure and metadata
+  </Step>
+  <Step title="Check Conflicts">
+    Checks for reserved names and conflicts
+  </Step>
+  <Step title="Detect Version">
+    Automatically detects version changes
+  </Step>
+  <Step title="Create PR">
+    Creates GitHub branch and pull request
+  </Step>
+  <Step title="Review">
+    Registry maintainers review and merge
+  </Step>
+</Steps>
+
+## Example Output
+
+```bash
+$ scm publish
+🔍 Reading and validating registry.json...
+✅ Validated component: my-component
+🔍 Validating component files...
+✅ Component files validated
+📊 Analyzing version changes...
+📈 Version change: 1.0.0 → 1.1.0
+🌿 Creating new branch...
+📤 Uploading component files...
+🔗 Creating pull request...
+✅ Successfully published my-component v1.1.0
+📋 Pull Request: https://github.com/Shadcn-Component-Manager/registry/pull/123
+✅ Your component has been submitted for review
+💡 The component will be available for installation once the PR is merged
+```
+
+## Component Requirements
+
+### Valid registry.json
+
+```json
+{
+  "name": "my-component",
+  "type": "registry:ui",
+  "title": "My Component",
+  "description": "A description of your component",
+  "files": [
+    {
+      "path": "MyComponent.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "dependencies": ["react@^18.0.0"],
+  "version": "1.0.0",
+  "author": "Your Name <your-email@example.com>",
+  "categories": ["ui"]
+}
+```
+
+### File Structure
+
+```
+my-component/
+├── registry.json              # Component metadata
+├── MyComponent.tsx            # Main component file
+├── useMyComponent.ts          # Custom hook (optional)
+├── styles.css                 # Styles (optional)
+└── README.md                  # Documentation (recommended)
+```
+
+## Version Management
+
+### Automatic Detection
+
+SCM automatically detects version changes:
+
+```bash
+# If you update your component files
+scm publish
+# Output: 🔢 Detected new version: 1.1.0
+```
+
+### Semantic Versioning
+
+<CardGroup cols={3}>
+  <Card title="Major (X.0.0)">
+    Breaking changes
+  </Card>
+  <Card title="Minor (0.X.0)">
+    New features, backward compatible
+  </Card>
+  <Card title="Patch (0.0.X)">
+    Bug fixes, backward compatible
+  </Card>
+</CardGroup>
+
+## GitHub Integration
+
+### Pull Request Creation
+
+When you publish, SCM creates a pull request:
+
+- **Branch Name**: `component/username/component-name-version`
+- **Commit Message**: `feat: add component-name vversion`
+- **PR Title**: `Add username/component-name vversion`
+
+### Review Process
+
+<Steps>
+  <Step title="Automated Checks">
+    GitHub Actions validate the component
+  </Step>
+  <Step title="Maintainer Review">
+    Registry maintainers review the PR
+  </Step>
+  <Step title="Feedback">
+    You may receive feedback or requests for changes
+  </Step>
+  <Step title="Merge">
+    Once approved, the PR is merged
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Validation Failed">
+    **Error:** Component validation failed
+    
+    **Solution:**
+    - Check error messages for missing fields
+    - Fix issues in registry.json or component files
+    - Ensure all required files exist
+  </Card>
+  <Card title="Permission Denied">
+    **Error:** Permission denied
+    
+    **Solution:**
+    - Ensure you are authenticated (`scm login`)
+    - Check GitHub permissions
+    - Verify repository access
+  </Card>
+</CardGroup>
+
+## Related Commands
+
+<CardGroup cols={2}>
+  <Card title="scm create" href="/cli/create">
+    Create a new component
+  </Card>
+  <Card title="scm add" href="/cli/add">
+    Install components
+  </Card>
+</CardGroup> 

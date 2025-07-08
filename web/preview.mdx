@@ -1,0 +1,125 @@
+---
+title: 'Component Details'
+description: 'View component details and source code in the SCM web interface.'
+---
+
+# Component Details
+
+View detailed information about components including source code and documentation.
+
+## Component Page
+
+Visit `/components/[author]/[name]` to view a specific component.
+
+### Header Section
+
+<CardGroup cols={2}>
+  <Card title="Author Link" icon="user">
+    Click `@author` to view their profile
+  </Card>
+  <Card title="Component Name" icon="tag">
+    Displays component name and title
+  </Card>
+  <Card title="Description" icon="file-text">
+    Full component description
+  </Card>
+  <Card title="Version Selector" icon="git-branch">
+    Dropdown to switch between versions
+  </Card>
+</CardGroup>
+
+### Main Content
+
+<CardGroup cols={2}>
+  <Card title="README" icon="book">
+    Component documentation and setup instructions
+  </Card>
+  <Card title="File Viewer" icon="code">
+    Browse component source code
+  </Card>
+</CardGroup>
+
+## File Viewer
+
+The file viewer has two panels:
+
+<CardGroup cols={2}>
+  <Card title="File Tree" icon="folder-tree">
+    Left panel showing component file structure
+  </Card>
+  <Card title="Code Viewer" icon="code">
+    Right panel with syntax-highlighted code
+  </Card>
+</CardGroup>
+
+### Features
+
+<CardGroup cols={2}>
+  <Card title="Resizable Panels" icon="resize">
+    Drag to adjust panel sizes
+  </Card>
+  <Card title="Syntax Highlighting" icon="palette">
+    Code is highlighted based on file type
+  </Card>
+  <Card title="File Navigation" icon="folder">
+    Click files in tree to view content
+  </Card>
+  <Card title="Scroll Support" icon="scroll">
+    Long files are scrollable
+  </Card>
+</CardGroup>
+
+## Sidebar
+
+The right sidebar shows:
+
+<CardGroup cols={2}>
+  <Card title="Dependencies" icon="package">
+    NPM and registry dependencies with links
+  </Card>
+  <Card title="Categories" icon="tags">
+    Component categories and tags
+  </Card>
+  <Card title="Metadata" icon="info">
+    Version, author, publish date
+  </Card>
+</CardGroup>
+
+## Version Switching
+
+<CardGroup cols={2}>
+  <Card title="Version Dropdown" icon="chevron-down">
+    Use the version dropdown in the header
+  </Card>
+  <Card title="URL Updates" icon="link">
+    URL updates with version parameter
+  </Card>
+  <Card title="Content Updates" icon="refresh">
+    All content updates for selected version
+  </Card>
+</CardGroup>
+
+## Mobile Experience
+
+<CardGroup cols={2}>
+  <Card title="Responsive Layout" icon="smartphone">
+    Responsive layout adapts to screen size
+  </Card>
+  <Card title="Stacked Viewer" icon="layers">
+    File viewer stacks vertically on mobile
+  </Card>
+  <Card title="Touch Navigation" icon="touch">
+    Touch-friendly navigation
+  </Card>
+</CardGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+  <Card title="Browse Components" href="/web/browsing" icon="grid">
+    Browse all components
+  </Card>
+  <Card title="Search Components" href="/web/search" icon="search">
+    Find specific components
+  </Card>
+</CardGroup> 

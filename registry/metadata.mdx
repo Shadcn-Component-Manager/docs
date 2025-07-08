@@ -1,0 +1,260 @@
+---
+title: 'Metadata Format'
+description: 'Learn about the registry.json metadata format for SCM components.'
+---
+
+# Metadata Format (registry.json)
+
+Each component in the SCM registry must include a `registry.json` file describing its metadata, dependencies, and other important information.
+
+## Example registry.json
+
+```json
+{
+  "name": "supachat",
+  "type": "registry:block",
+  "title": "Supabase-Powered Realtime Chat",
+  "description": "Realtime chat system with full source control, Supabase realtime, admin panel, file uploads, emojis, and more.",
+  "author": "Bankk <https://bankkroll.xyz>",
+  "dependencies": [
+    "@supabase/supabase-js",
+    "@supabase/ssr",
+    "react-markdown",
+    "date-fns",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "zod",
+    "react-dropzone",
+    "emoji-datasource"
+  ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "card",
+    "avatar",
+    "badge",
+    "scroll-area",
+    "textarea",
+    "dropdown-menu",
+    "popover",
+    "separator",
+    "sheet"
+  ],
+  "files": [
+    {
+      "path": "registry/supachat/components/chat-widget.tsx",
+      "type": "registry:component",
+      "target": "~/components/supachat/chat-widget.tsx"
+    },
+    {
+      "path": "registry/supachat/hooks/use-chat.ts",
+      "type": "registry:hook",
+      "target": "~/hooks/supachat/use-chat.ts"
+    }
+  ],
+  "version": "1.0.0",
+  "categories": [
+    "chat",
+    "realtime",
+    "supabase",
+    "admin",
+    "messaging"
+  ],
+  "cssVars": {
+    "light": {
+      "chat-primary": "222.2 84% 4.9%",
+      "chat-primary-foreground": "210 40% 98%"
+    },
+    "dark": {
+      "chat-primary": "210 40% 98%",
+      "chat-primary-foreground": "222.2 84% 4.9%"
+    }
+  },
+  "docs": "Quick setup instructions and documentation..."
+}
+```
+
+## Required Fields
+
+<CardGroup cols={2}>
+  <Card title="name">
+    **Type:** `string`  
+    **Required:** ✅ Yes  
+    **Format:** kebab-case  
+    **Example:** `"my-awesome-button"`
+    
+    The unique identifier for your component. Must be in kebab-case format.
+  </Card>
+  <Card title="type">
+    **Type:** `string`  
+    **Required:** ✅ Yes  
+    **Values:** `"registry:component"`, `"registry:block"`, `"registry:hook"`, `"registry:lib"`  
+    
+    Identifies the component type. Must match the actual file organization.
+  </Card>
+  <Card title="title">
+    **Type:** `string`  
+    **Required:** ✅ Yes  
+    **Example:** `"My Awesome Button"`
+    
+    A human-readable title for your component, displayed in the registry.
+  </Card>
+  <Card title="description">
+    **Type:** `string`  
+    **Required:** ✅ Yes  
+    
+    A brief description of what your component does and its key features.
+  </Card>
+</CardGroup>
+
+## File Structure
+
+The `files` array defines all files included with your component:
+
+```json
+{
+  "files": [
+    {
+      "path": "registry/components/MyComponent.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/hooks/useMyComponent.ts",
+      "type": "registry:hook"
+    },
+    {
+      "path": "registry/lib/utils.ts",
+      "type": "registry:lib"
+    }
+  ]
+}
+```
+
+**File Types:**
+- `registry:component` - React component files
+- `registry:hook` - Custom React hooks
+- `registry:lib` - Utility functions and libraries
+- `registry:block` - Complex component blocks
+
+**File Paths:**
+- Must be relative to component root
+- Must exist in the component directory
+- Should be organized in registry/ subdirectories
+
+## Dependencies
+
+<CardGroup cols={2}>
+  <Card title="NPM Dependencies">
+    ```json
+    "dependencies": [
+      "react@^18.0.0",
+      "lucide-react@^0.3.0",
+      "clsx@^2.0.0"
+    ]
+    ```
+    
+    List of npm packages required by your component. Use semantic versioning.
+  </Card>
+  <Card title="Registry Dependencies">
+    ```json
+    "registryDependencies": [
+      "button",
+      "card",
+      "user/other-component"
+    ]
+    ```
+    
+    Other SCM components your component depends on. Can be official components or other registry components.
+  </Card>
+</CardGroup>
+
+## CSS Variables
+
+CSS variables allow users to customize your component's theming:
+
+```json
+{
+  "cssVars": {
+    "light": {
+      "brand": "20 14.3% 4.1%",
+      "brand-foreground": "210 40% 98%"
+    },
+    "dark": {
+      "brand": "20 14.3% 4.1%",
+      "brand-foreground": "210 40% 98%"
+    }
+  }
+}
+```
+
+**CSS Variable Structure:**
+- `light` - Variables for light mode
+- `dark` - Variables for dark mode
+
+## Validation Rules
+
+<CardGroup cols={2}>
+  <Card title="Name Validation">
+    - Must be in kebab-case format
+    - Cannot be a reserved component name
+    - Must be unique within your namespace
+    - Only lowercase letters, numbers, and hyphens
+  </Card>
+  <Card title="Version Validation">
+    - Must follow semantic versioning (e.g., `1.0.0`)
+    - Cannot be `0.0.0`
+    - Must be greater than previous versions
+  </Card>
+  <Card title="File Validation">
+    - All files listed must exist in the component directory
+    - File paths must be relative to the component root
+    - Files must be organized in registry/ subdirectories
+  </Card>
+  <Card title="Type Validation">
+    - Must be one of: registry:component, registry:block, registry:hook, registry:lib
+    - Type must match actual file organization
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Naming">
+    - Use descriptive, unique names for your components
+    - Avoid using names that conflict with official components
+    - Check the reserved names list before creating or publishing
+  </Card>
+  <Card title="Documentation">
+    - Write clear, concise descriptions
+    - Include usage examples in docs field
+    - Document all props and variants
+  </Card>
+  <Card title="Dependencies">
+    - Keep dependencies minimal
+    - Use semantic versioning
+    - Specify compatible version ranges
+  </Card>
+  <Card title="Versioning">
+    - Bump version for every change
+    - Use major version for breaking changes
+    - Document changes in release notes
+  </Card>
+</CardGroup>
+
+## Related Documentation
+
+<CardGroup cols={2}>
+  <Card title="Component Structure" href="/registry/component-structure">
+    Component structure guide
+  </Card>
+  <Card title="Dependency Management" href="/registry/dependencies">
+    Dependency management
+  </Card>
+  <Card title="Quality Guidelines" href="/registry/guidelines">
+    Quality guidelines
+  </Card>
+  <Card title="Publishing Workflow" href="/registry/publishing">
+    Publishing workflow
+  </Card>
+</CardGroup> 

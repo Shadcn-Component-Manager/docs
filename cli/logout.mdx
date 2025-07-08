@@ -1,0 +1,73 @@
+---
+title: 'Logout Command'
+description: 'Clear stored SCM credentials.'
+---
+
+# Logout Command
+
+Clear stored GitHub credentials and authentication data.
+
+## Basic Usage
+
+```bash
+scm logout
+```
+
+## What Logout Does
+
+<Steps>
+  <Step title="Remove Token">
+    Remove stored GitHub token from config file
+  </Step>
+  <Step title="Clear Cache">
+    Clear cached component data
+  </Step>
+  <Step title="Confirm">
+    Confirm the logout with success message
+  </Step>
+</Steps>
+
+## Example Output
+
+```bash
+$ scm logout
+🔓 Logging out of SCM...
+🗑️  Clearing stored credentials...
+✅ Successfully logged out!
+📝 You'll need to run 'scm login' to authenticate again
+```
+
+## Files Removed
+
+The logout command removes:
+
+- **Config File**: `~/.config/scm/config.json`
+- **Cache Directory**: `~/.scm/cache/`
+
+## Verification
+
+After logout, try an authenticated command:
+
+```bash
+scm publish
+# Output: ❌ Authentication required. Please run 'scm login' first
+```
+
+## Re-authentication
+
+After logging out, authenticate again:
+
+```bash
+scm login
+```
+
+## Related Commands
+
+<CardGroup cols={2}>
+  <Card title="scm login">
+    Authenticate with GitHub
+  </Card>
+  <Card title="scm publish">
+    Publish components (requires authentication)
+  </Card>
+</CardGroup> 

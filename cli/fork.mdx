@@ -1,0 +1,135 @@
+---
+title: 'Fork Command'
+description: 'Fork and customize components from the SCM registry.'
+---
+
+# Fork Command
+
+Create a copy of an existing component for customization.
+
+## Basic Usage
+
+```bash
+scm fork user/component
+```
+
+## Options
+
+```bash
+# Fork specific version
+scm fork user/component --version 1.0.0
+
+# Custom name for your fork
+scm fork user/component --name my-custom-component
+```
+
+## Forking Workflow
+
+<Steps>
+  <Step title="Download Component">
+    Downloads the specified component version
+  </Step>
+  <Step title="Create Directory">
+    Creates a new directory with your chosen name
+  </Step>
+  <Step title="Copy Files">
+    Copies all files and metadata
+  </Step>
+  <Step title="Update Metadata">
+    Updates registry.json with your information
+  </Step>
+  <Step title="Customize">
+    Allows you to customize and publish
+  </Step>
+</Steps>
+
+## Forked Component Structure
+
+After forking, you'll have a complete copy:
+
+```
+my-button/
+├── registry.json              # Updated with your info
+├── Button.tsx                 # Original component file
+├── useButton.ts               # Original hook (if exists)
+├── styles.css                 # Original styles (if exists)
+└── README.md                  # Original documentation
+```
+
+## Updating Metadata
+
+After forking, update the `registry.json` file:
+
+```json
+{
+  "name": "my-button",
+  "title": "My Custom Button",
+  "description": "A customized version of the original button",
+  "author": "Your Name <your-email@example.com>",
+  "version": "1.0.0"
+}
+```
+
+## Customization Process
+
+<Steps>
+  <Step title="Review Original">
+    Understand the original component's functionality
+  </Step>
+  <Step title="Plan Changes">
+    Decide what modifications to make
+  </Step>
+  <Step title="Update Code">
+    Modify component files as needed
+  </Step>
+  <Step title="Update Documentation">
+    Update README and comments
+  </Step>
+  <Step title="Test Changes">
+    Test your modified component
+  </Step>
+  <Step title="Publish Fork">
+    Publish your customized version
+  </Step>
+</Steps>
+
+## Version Selection
+
+```bash
+# Fork latest version
+scm fork user/component
+
+# Fork specific version
+scm fork user/component --version 1.0.0
+```
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Component Not Found">
+    **Issue:** Component not found in registry
+    
+    **Solutions:**
+    - Check component name and namespace
+    - Use `scm search <term>` to find available components
+    - Verify the component is published
+  </Card>
+  <Card title="Name Conflicts">
+    **Issue:** Fork name already exists
+    
+    **Solution:**
+    - Choose a different name
+    - Use `--name` option to specify custom name
+  </Card>
+</CardGroup>
+
+## Related Commands
+
+<CardGroup cols={2}>
+  <Card title="scm create" href="/cli/create">
+    Create a new component
+  </Card>
+  <Card title="scm publish" href="/cli/publish">
+    Publish your forked component
+  </Card>
+</CardGroup> 

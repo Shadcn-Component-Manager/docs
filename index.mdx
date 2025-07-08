@@ -1,0 +1,111 @@
+---
+title: 'SCM Documentation'
+description: 'Complete guide to the Shadcn Component Manager - discover, install, and manage UI components.'
+---
+
+# SCM Documentation
+
+SCM (Shadcn Component Manager) is a CLI tool and registry ecosystem for discovering, installing, and managing UI components.
+
+## Quick Install
+
+```bash
+npm install -g @shadcn-component-manager/scm
+```
+
+## Get Started
+
+<Steps>
+  <Step title="Login">
+    ```bash
+    scm login
+    ```
+  </Step>
+  <Step title="Browse">
+    ```bash
+    scm browse
+    ```
+  </Step>
+  <Step title="Search">
+    ```bash
+    scm search button
+    ```
+  </Step>
+  <Step title="Install">
+    ```bash
+    scm add username/component-name
+    ```
+  </Step>
+</Steps>
+
+## What is SCM?
+
+<CardGroup cols={2}>
+  <Card title="CLI Tool" icon="terminal">
+    Command-line interface for component management
+  </Card>
+  <Card title="Registry" icon="database">
+    Centralized repository of community components
+  </Card>
+  <Card title="Web Interface" icon="globe">
+    Browse and preview components
+  </Card>
+  <Card title="GitHub Integration" icon="github">
+    Authentication and publishing workflow
+  </Card>
+</CardGroup>
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="One Command Install" icon="download">
+    Install components with one command
+  </Card>
+  <Card title="Search & Browse" icon="search">
+    Search and browse component library
+  </Card>
+  <Card title="Publish Components" icon="upload">
+    Publish your own components
+  </Card>
+  <Card title="Dependency Management" icon="settings">
+    Automatic dependency management
+  </Card>
+  <Card title="Versioning" icon="git-branch">
+    Semantic versioning
+  </Card>
+</CardGroup>
+
+## Core Commands
+
+<CodeGroup>
+  <CodeGroupItem title="Authentication">
+    ```bash
+    scm login          # Authenticate with GitHub
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Discovery">
+    ```bash
+    scm search <query> # Search components
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Installation">
+    ```bash
+    scm add <component> # Install component
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Creation">
+    ```bash
+    scm create <name>  # Create new component
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Publishing">
+    ```bash
+    scm publish        # Publish component
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Updates">
+    ```bash
+    scm update         # Update components
+    ```
+  </CodeGroupItem>
+</CodeGroup>

@@ -1,0 +1,162 @@
+---
+title: 'What is SCM?'
+description: 'Learn about SCM (Shadcn Component Manager), its purpose, and how it works.'
+---
+
+# What is SCM?
+
+SCM (Shadcn Component Manager) is an open-source CLI tool and registry ecosystem designed to extend shadcn's component model, enabling developers to create, share, and install UI components with ease.
+
+<Note>
+  SCM is inspired by the NPM registry concept but specifically built for React components and the shadcn/ui ecosystem.
+</Note>
+
+## The Problem
+
+<CardGroup cols={2}>
+  <Card title="Discovery">
+    Finding quality shadcn/ui components is difficult
+  </Card>
+  <Card title="Installation">
+    Complex dependency management and error-prone setup
+  </Card>
+  <Card title="Quality">
+    Inconsistent component quality and documentation
+  </Card>
+  <Card title="Management">
+    No centralized component discovery for shadcn ecosystem
+  </Card>
+</CardGroup>
+
+## The Solution
+
+SCM provides a complete ecosystem:
+
+<CardGroup cols={2}>
+  <Card title="CLI Tool" icon="terminal">
+    Install and manage components with automatic dependency resolution
+  </Card>
+  <Card title="Registry" icon="database">
+    Centralized GitHub-based component repository
+  </Card>
+  <Card title="Web Interface" icon="globe">
+    Modern Next.js app for browsing and previewing components
+  </Card>
+  <Card title="Quality Control" icon="shield-check">
+    Automated validation and human review process
+  </Card>
+</CardGroup>
+
+## How It Works
+
+<Steps>
+  <Step title="Create">
+    Developers create components using `scm create`
+  </Step>
+  <Step title="Publish">
+    Submit to registry via GitHub pull requests
+  </Step>
+  <Step title="Review">
+    Automated checks and human review ensure quality
+  </Step>
+  <Step title="Discover">
+    Users search and browse components via CLI or web
+  </Step>
+  <Step title="Install">
+    One-command installation with automatic dependency management
+  </Step>
+</Steps>
+
+## Architecture
+
+<CardGroup cols={2}>
+  <Card title="Registry" icon="database">
+    GitHub repository storing all community components
+  </Card>
+  <Card title="CLI" icon="terminal">
+    Node.js tool for component management and installation
+  </Card>
+  <Card title="Web" icon="globe">
+    Next.js app for visual browsing and discovery
+  </Card>
+  <Card title="GitHub" icon="github">
+    Authentication, publishing workflow, and version control
+  </Card>
+</CardGroup>
+
+## Key Benefits
+
+<AccordionGroup>
+  <Accordion title="For Users" icon="users">
+    - Quick component discovery and one-command installation
+    - Quality-assured components with consistent standards
+    - Automatic dependency management and conflict resolution
+    - Visual preview and documentation before installation
+  </Accordion>
+  
+  <Accordion title="For Creators" icon="code">
+    - Easy component distribution through GitHub workflow
+    - Community feedback and recognition
+    - Standardized publishing process with quality gates
+    - Built-in versioning and dependency management
+  </Accordion>
+  
+  <Accordion title="For Teams" icon="building">
+    - Consistent component usage across projects
+    - Centralized component management and discovery
+    - Reduced development time with pre-built solutions
+    - Quality assurance through community review
+  </Accordion>
+</AccordionGroup>
+
+## Technology Stack
+
+<CardGroup cols={2}>
+  <Card title="Backend" icon="server">
+    Node.js, GitHub APIs, Octokit
+  </Card>
+  <Card title="Frontend" icon="monitor">
+    Next.js, React, TypeScript
+  </Card>
+  <Card title="Styling" icon="palette">
+    Tailwind CSS, Radix UI components
+  </Card>
+  <Card title="Auth" icon="key">
+    GitHub OAuth
+  </Card>
+</CardGroup>
+
+## Creator & Community
+
+<CardGroup cols={2}>
+  <Card title="Creator" icon="user" href="https://github.com/BankkRoll">
+    **Twitter:** [@bankkroll.eth](https://x.com/bankkroll.eth)  
+    **GitHub:** [github.com/BankkRoll](https://github.com/BankkRoll)
+  </Card>
+  <Card title="Organization" icon="organization" href="https://github.com/Shadcn-Component-Manager">
+    [Shadcn-Component-Manager](https://github.com/Shadcn-Component-Manager)
+  </Card>
+</CardGroup>
+
+## Repository Structure
+
+<CardGroup cols={2}>
+  <Card title="CLI Tool" icon="terminal" href="https://github.com/Shadcn-Component-Manager/scm">
+    Core package and command-line interface
+  </Card>
+  <Card title="Registry" icon="database" href="https://github.com/Shadcn-Component-Manager/registry">
+    Component repository and automation
+  </Card>
+  <Card title="Web Interface" icon="globe" href="https://github.com/Shadcn-Component-Manager/web">
+    Next.js web application
+  </Card>
+  <Card title="Documentation" icon="book" href="https://github.com/Shadcn-Component-Manager/docs">
+    This documentation site
+  </Card>
+</CardGroup>
+
+## NPM Package
+
+<Tip>
+  Available on npm: [@shadcn-component-manager/scm](https://npmjs.com/package/@shadcn-component-manager/scm)
+</Tip>

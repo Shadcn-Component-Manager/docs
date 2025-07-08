@@ -1,0 +1,92 @@
+---
+title: 'Search Components'
+description: 'Search for components in the SCM registry.'
+---
+
+# Search Components
+
+Search for components in the registry using keywords and filters.
+
+## Basic Search
+
+```bash
+# Search by name
+scm search button
+
+# Search by description
+scm search "dark mode"
+```
+
+## Search Filters
+
+```bash
+# Limit results
+scm search button --limit 5
+
+# Force refresh cache
+scm search button --force
+```
+
+## Examples
+
+```bash
+# Find button components
+scm search button
+
+# Find dark mode components
+scm search "dark mode"
+
+# Find UI components with limit
+scm search ui --limit 10
+```
+
+## Search Results
+
+Results show:
+
+<CardGroup cols={2}>
+  <Card title="Component Info">
+    - Component name and author
+    - Description and version
+    - Categories and tags
+  </Card>
+  <Card title="Installation">
+    - Installation command
+    - Quick access to component details
+  </Card>
+</CardGroup>
+
+## Example Output
+
+```bash
+$ scm search button
+✅ Found 3 matching components
+
+  1. johndoe/awesome-button by johndoe
+     A beautiful and customizable button component
+     Categories: ui, button, interactive
+
+  2. janedoe/custom-button by janedoe
+     Advanced button with animations
+     Categories: ui, button, animation
+
+  3. user/simple-button by user
+     Minimal button component
+     Categories: ui, button, minimal
+```
+
+## Options
+
+```bash
+# Limit results
+scm search query --limit 10
+
+# Force refresh cache
+scm search query --force
+```
+
+## Next Steps
+
+- [Add Components](/cli/add) - Install found components
+- [Preview Components](/cli/preview) - View component details
+- [Browse Web Interface](/web/browsing) - Visual component browsing 

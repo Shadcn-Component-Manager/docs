@@ -1,0 +1,174 @@
+---
+title: 'SCM CLI Development'
+description: 'Set up the SCM CLI tool locally for development and contribution.'
+---
+
+# SCM CLI Development
+
+Node.js-based CLI tool for the Shadcn Component Manager ecosystem.
+
+## Tech Stack
+
+<CardGroup cols={2}>
+  <Card title="Runtime">
+    Node.js (ES Modules)
+  </Card>
+  <Card title="Language">
+    TypeScript
+  </Card>
+  <Card title="Framework">
+    Commander.js
+  </Card>
+  <Card title="Build Tool">
+    esbuild
+  </Card>
+</CardGroup>
+
+<Card title="Package Manager">
+  pnpm
+</Card>
+
+## Prerequisites
+
+- Node.js 18+
+- Git with GitHub account
+- pnpm (recommended)
+
+## Setup
+
+```bash
+git clone https://github.com/Shadcn-Component-Manager/scm.git
+cd scm
+pnpm install
+```
+
+## Project Structure
+
+```
+scm/
+├── src/
+│   ├── cli.ts              # Main entry point
+│   ├── commands/           # Command implementations
+│   └── lib/               # Core libraries
+├── dist/                  # Compiled output
+└── scripts/              # Build scripts
+```
+
+## Development Commands
+
+<CardGroup cols={2}>
+  <Card title="Dev Mode">
+    ```bash
+    pnpm dev
+    ```
+  </Card>
+  <Card title="Build">
+    ```bash
+    pnpm build
+    ```
+  </Card>
+  <Card title="Watch">
+    ```bash
+    pnpm build:watch
+    ```
+  </Card>
+  <Card title="Binary">
+    ```bash
+    pnpm build:binary
+    ```
+  </Card>
+  <Card title="Lint">
+    ```bash
+    pnpm lint
+    ```
+  </Card>
+  <Card title="Format">
+    ```bash
+    pnpm format
+    ```
+  </Card>
+</CardGroup>
+
+## Testing
+
+```bash
+# Build and link locally
+pnpm build
+pnpm link --global
+
+# Test commands
+scm --help
+scm --version
+scm login
+```
+
+## Key Dependencies
+
+<CardGroup cols={2}>
+  <Card title="Core">
+    - commander: CLI framework
+    - inquirer: Interactive prompts
+    - chalk: Terminal styling
+    - octokit: GitHub API
+  </Card>
+  <Card title="Dev">
+    - typescript: Type safety
+    - esbuild: Fast bundling
+    - eslint: Code linting
+    - jest: Testing
+  </Card>
+</CardGroup>
+
+## Adding Commands
+
+1. Create file in `src/commands/`
+2. Follow existing pattern
+3. Register in main CLI file
+4. Test locally
+
+```typescript
+import { Command } from 'commander';
+
+export const newCommand = new Command('new')
+  .description('New command description')
+  .action(async () => {
+    // Implementation
+  });
+```
+
+## Build Process
+
+- TypeScript compilation
+- esbuild bundling
+- Binary generation with pkg
+- Development watch mode
+
+## Publishing
+
+1. Update version in package.json
+2. `pnpm build`
+3. `pnpm start --help` (test)
+4. `pnpm publish`
+
+## Troubleshooting
+
+<CardGroup cols={2}>
+  <Card title="Build Fails">
+    Check TypeScript errors and imports
+  </Card>
+  <Card title="Command Not Found">
+    Verify build completed and PATH
+  </Card>
+  <Card title="GitHub API Issues">
+    Check token permissions and OAuth config
+  </Card>
+  <Card title="Registry Issues">
+    Verify registry URL and network
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<Card title="CLI Guide" href="/cli/login">
+  Learn CLI
+</Card>
