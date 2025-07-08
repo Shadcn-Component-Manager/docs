@@ -41,16 +41,16 @@ npm install -g @shadcn-component-manager/scm
 ## What is SCM?
 
 <CardGroup cols={2}>
-  <Card title="CLI Tool" icon="terminal">
+  <Card title="CLI Tool" icon="terminal" href="/cli/authentication">
     Command-line interface for component management
   </Card>
-  <Card title="Registry" icon="database">
+  <Card title="Registry" icon="database" href="https://github.com/Shadcn-Component-Manager/registry">
     Centralized repository of community components
   </Card>
-  <Card title="Web Interface" icon="globe">
+  <Card title="Web Interface" icon="globe" href="/web/overview">
     Browse and preview components
   </Card>
-  <Card title="GitHub Integration" icon="github">
+  <Card title="GitHub Integration" icon="github" href="/cli/authentication">
     Authentication and publishing workflow
   </Card>
 </CardGroup>
@@ -58,19 +58,19 @@ npm install -g @shadcn-component-manager/scm
 ## Key Features
 
 <CardGroup cols={2}>
-  <Card title="One Command Install" icon="download">
+  <Card title="One Command Install" icon="download" href="/cli/add">
     Install components with one command
   </Card>
-  <Card title="Search & Browse" icon="search">
+  <Card title="Search & Browse" icon="search" href="/web/search">
     Search and browse component library
   </Card>
-  <Card title="Publish Components" icon="upload">
+  <Card title="Publish Components" icon="upload" href="/cli/publish">
     Publish your own components
   </Card>
-  <Card title="Dependency Management" icon="settings">
+  <Card title="Dependency Management" icon="settings" href="/cli/add">
     Automatic dependency management
   </Card>
-  <Card title="Versioning" icon="git-branch">
+  <Card title="Versioning" icon="git-branch" href="/cli/update">
     Semantic versioning
   </Card>
 </CardGroup>
@@ -78,34 +78,62 @@ npm install -g @shadcn-component-manager/scm
 ## Core Commands
 
 <CodeGroup>
-  <CodeGroupItem title="Authentication">
-    ```bash
-    scm login          # Authenticate with GitHub
-    ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Discovery">
-    ```bash
-    scm search <query> # Search components
-    ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Installation">
-    ```bash
-    scm add <component> # Install component
-    ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Creation">
-    ```bash
-    scm create <name>  # Create new component
-    ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Publishing">
-    ```bash
-    scm publish        # Publish component
-    ```
-  </CodeGroupItem>
-  <CodeGroupItem title="Updates">
-    ```bash
-    scm update         # Update components
-    ```
-  </CodeGroupItem>
+  ```bash authentication
+  scm login          # Authenticate with GitHub
+  ```
+  ```bash discovery
+  scm search <query> # Search components
+  ```
+  ```bash installation
+  scm add <component> # Install component
+  ```
+  ```bash creation
+  scm create <name>  # Create new component
+  ```
+  ```bash publishing
+  scm publish        # Publish component
+  ```
+  ```bash updates
+  scm update         # Update components
+  ```
 </CodeGroup>
+
+## Quick Links
+
+<CardGroup cols={2}>
+  <Card title="Quick Start Guide" icon="rocket" href="/quickstart">
+    Get up and running in 5 minutes
+  </Card>
+  <Card title="CLI Commands" icon="terminal" href="/cli/authentication">
+    Complete CLI reference
+  </Card>
+  <Card title="Web Interface" icon="globe" href="/web/overview">
+    Browse components online
+  </Card>
+  <Card title="Component Registry" icon="database" href="https://github.com/Shadcn-Component-Manager/registry">
+    View all available components
+  </Card>
+  <Card title="Publishing Guide" icon="upload" href="/cli/publish">
+    Learn how to publish components
+  </Card>
+  <Card title="Configuration" icon="settings" href="/cli/configuration">
+    Configure SCM for your project
+  </Card>
+</CardGroup>
+
+## Community & Support
+
+<CardGroup cols={2}>
+  <Card title="GitHub Repository" icon="github" href="https://github.com/Shadcn-Component-Manager">
+    View source code and contribute
+  </Card>
+  <Card title="NPM Package" icon="package" href="https://www.npmjs.com/package/@shadcn-component-manager/scm">
+    Install from npm
+  </Card>
+  <Card title="Creator" icon="user" href="https://github.com/BankkRoll">
+    Meet the creator
+  </Card>
+  <Card title="Issues & Feedback" icon="message-circle" href="https://github.com/Shadcn-Component-Manager/scm/issues">
+    Report issues and suggest features
+  </Card>
+</CardGroup>
