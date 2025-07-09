@@ -16,8 +16,20 @@ scm preview user/component
 ## Options
 
 ```bash
-# Preview specific version
-scm preview user/component --version 1.0.0
+# Force refresh cache
+scm preview user/component --force
+
+# Output format (text, json, markdown)
+scm preview user/component --output text
+
+# Show raw file content
+scm preview user/component --raw
+
+# Show dependency tree
+scm preview user/component --dependencies
+
+# Show only code without metadata
+scm preview user/component --code
 ```
 
 ## Preview Information
@@ -81,7 +93,29 @@ A customizable button component with multiple variants...
 scm preview user/component
 
 # Preview specific version
-scm preview user/component --version 1.0.0
+scm preview user/component@1.0.0
+```
+
+## Examples
+
+```bash
+# Basic preview
+scm preview user/button
+
+# Preview specific version
+scm preview user/button@1.0.0
+
+# JSON output format
+scm preview user/button --output json
+
+# Show only code
+scm preview user/button --code
+
+# Show dependencies
+scm preview user/button --dependencies
+
+# Force refresh cache
+scm preview user/button --force
 ```
 
 ## Use Cases

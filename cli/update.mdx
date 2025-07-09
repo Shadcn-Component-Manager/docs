@@ -20,6 +20,31 @@ scm update username/component-name
 scm update --dry-run
 ```
 
+## Options
+
+```bash
+# Force update even if no newer version available
+scm update --force
+
+# Show what would be updated without making changes
+scm update --dry-run
+
+# Update to specific version (instead of latest)
+scm update --version 2.0.0
+
+# Update all components (explicit flag)
+scm update --all
+
+# Skip updating dependencies
+scm update --skip-deps
+
+# Only check for updates, don't install
+scm update --check-only
+
+# Interactive mode for each component
+scm update --interactive
+```
+
 ## Examples
 
 ```bash
@@ -34,6 +59,15 @@ scm update --dry-run
 
 # Force update even if no newer version
 scm update --force
+
+# Update to specific version
+scm update johndoe/awesome-button --version 2.0.0
+
+# Interactive mode
+scm update --interactive
+
+# Check only (no updates)
+scm update --check-only
 ```
 
 ## What Happens
@@ -69,19 +103,6 @@ $ scm update
 ✅ Updated johndoe/awesome-button to 1.1.0
 ```
 
-## Options
-
-```bash
-# Force update even if no newer version available
-scm update --force
-
-# Show what would be updated without making changes
-scm update --dry-run
-
-# Update specific component
-scm update username/component-name
-```
-
 ## Version Tracking
 
 SCM tracks installed components in `.scm-installed.json`:
@@ -93,6 +114,15 @@ SCM tracks installed components in `.scm-installed.json`:
     "installedAt": "2024-01-15T10:30:00.000Z"
   }
 }
+```
+
+## Interactive Mode
+
+When using `--interactive`, SCM prompts for each component:
+
+```bash
+$ scm update --interactive
+Update johndoe/awesome-button from 1.0.0 to 1.1.0? (Y/n)
 ```
 
 ## Troubleshooting

@@ -26,6 +26,9 @@ scm publish --message "feat: add new button variant"
 
 # Specific item from registry collection
 scm publish --item my-component
+
+# Specify version manually (override auto-detection)
+scm publish --version 2.0.0
 ```
 
 ## Publishing Workflow
@@ -65,6 +68,25 @@ $ scm publish
 📋 Pull Request: https://github.com/Shadcn-Component-Manager/registry/pull/123
 ✅ Your component has been submitted for review
 💡 The component will be available for installation once the PR is merged
+```
+
+## Examples
+
+```bash
+# Basic publish
+scm publish
+
+# Skip confirmation prompts
+scm publish --yes
+
+# Custom commit message
+scm publish --message "feat: add awesome button component"
+
+# Specify version manually
+scm publish --version 2.0.0
+
+# Publish specific item from collection
+scm publish --item my-button
 ```
 
 ## Component Requirements
@@ -110,7 +132,14 @@ SCM automatically detects version changes:
 ```bash
 # If you update your component files
 scm publish
-# Output: 🔢 Detected new version: 1.1.0
+# Output: 📈 Version change: 1.0.0 → 1.1.0
+```
+
+### Manual Version
+
+```bash
+# Specify version manually
+scm publish --version 2.0.0
 ```
 
 ### Semantic Versioning

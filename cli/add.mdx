@@ -20,6 +20,28 @@ scm add username/component-name@1.0.0
 scm add username/component-name --force
 ```
 
+## Options
+
+```bash
+# Force refresh cache
+scm add username/component-name --force
+
+# Show what would be installed without installing
+scm add username/component-name --dry-run
+
+# Custom installation path
+scm add username/component-name --path custom/path
+
+# Skip installing dependencies
+scm add username/component-name --skip-deps
+
+# Show detailed installation info
+scm add username/component-name --verbose
+
+# Skip confirmation prompts
+scm add username/component-name --yes
+```
+
 ## Examples
 
 ```bash
@@ -31,6 +53,15 @@ scm add johndoe/awesome-button@2.1.0
 
 # Force reinstall
 scm add johndoe/awesome-button --force
+
+# Dry run to see what would be installed
+scm add johndoe/awesome-button --dry-run
+
+# Skip dependency installation
+scm add johndoe/awesome-button --skip-deps
+
+# Install with verbose output
+scm add johndoe/awesome-button --verbose
 ```
 
 ## What Happens

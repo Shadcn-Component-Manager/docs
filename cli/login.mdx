@@ -18,6 +18,15 @@ scm login
 ```bash
 # Force re-authentication
 scm login --force
+
+# Use existing token instead of OAuth flow
+scm login --token your-github-token
+
+# Check current authentication status
+scm login --check
+
+# Show detailed auth info
+scm login --verbose
 ```
 
 ## Authentication Flow
@@ -68,6 +77,25 @@ SCM requests these GitHub scopes:
     Full repository access for publishing
   </Card>
 </CardGroup>
+
+## Examples
+
+```bash
+# Basic login
+scm login
+
+# Force re-authentication
+scm login --force
+
+# Check authentication status
+scm login --check
+
+# Use existing token
+scm login --token ghp_your_token_here
+
+# Verbose output
+scm login --verbose
+```
 
 ## Troubleshooting
 

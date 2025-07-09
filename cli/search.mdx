@@ -17,14 +17,35 @@ scm search button
 scm search "dark mode"
 ```
 
-## Search Filters
+## Options
 
 ```bash
-# Limit results
-scm search button --limit 5
-
 # Force refresh cache
 scm search button --force
+
+# Filter by category
+scm search button --category ui
+
+# Limit results
+scm search button --limit 10
+
+# Filter by author
+scm search button --author username
+
+# Sort by field (name, author, date, popularity)
+scm search button --sort name
+
+# Output format (table, json, csv)
+scm search button --output table
+
+# Filter by component type
+scm search button --type ui
+
+# Show detailed information
+scm search button --verbose
+
+# Minimal output
+scm search button --quiet
 ```
 
 ## Examples
@@ -38,6 +59,21 @@ scm search "dark mode"
 
 # Find UI components with limit
 scm search ui --limit 10
+
+# Search by author
+scm search --author johndoe
+
+# Filter by category
+scm search button --category ui
+
+# JSON output format
+scm search button --output json
+
+# Force refresh cache
+scm search button --force
+
+# Sort by popularity
+scm search button --sort popularity
 ```
 
 ## Search Results
@@ -75,15 +111,36 @@ $ scm search button
      Categories: ui, button, minimal
 ```
 
-## Options
+## Output Formats
 
-```bash
-# Limit results
-scm search query --limit 10
+<CardGroup cols={3}>
+  <Card title="Table">
+    Human-readable format (default)
+  </Card>
+  <Card title="JSON">
+    Machine-readable JSON format
+  </Card>
+  <Card title="CSV">
+    Comma-separated values format
+  </Card>
+</CardGroup>
 
-# Force refresh cache
-scm search query --force
-```
+## Sorting Options
+
+<CardGroup cols={2}>
+  <Card title="name">
+    Sort alphabetically by component name
+  </Card>
+  <Card title="author">
+    Sort by author name
+  </Card>
+  <Card title="date">
+    Sort by publication date
+  </Card>
+  <Card title="popularity">
+    Sort by popularity/usage
+  </Card>
+</CardGroup>
 
 ## Next Steps
 

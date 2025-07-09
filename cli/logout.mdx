@@ -13,6 +13,19 @@ Clear stored GitHub credentials and authentication data.
 scm logout
 ```
 
+## Options
+
+```bash
+# Clear all cached data (not just token)
+scm logout --all
+
+# Clear cache only
+scm logout --cache
+
+# Force logout without confirmation
+scm logout --force
+```
+
 ## What Logout Does
 
 <Steps>
@@ -41,8 +54,24 @@ $ scm logout
 
 The logout command removes:
 
-- **Config File**: `~/.config/scm/config.json`
+- **Config File**: `~/.scm/config.json`
 - **Cache Directory**: `~/.scm/cache/`
+
+## Examples
+
+```bash
+# Basic logout
+scm logout
+
+# Clear all cached data
+scm logout --all
+
+# Clear cache only
+scm logout --cache
+
+# Force logout without confirmation
+scm logout --force
+```
 
 ## Verification
 

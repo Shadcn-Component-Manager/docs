@@ -16,11 +16,20 @@ scm fork user/component
 ## Options
 
 ```bash
-# Fork specific version
-scm fork user/component --version 1.0.0
-
-# Custom name for your fork
+# New name for forked component
 scm fork user/component --name my-custom-component
+
+# Custom description for fork
+scm fork user/component --description "My custom button variant"
+
+# Custom output path
+scm fork user/component --path custom/path
+
+# Overwrite existing directory
+scm fork user/component --force
+
+# Skip confirmation prompts
+scm fork user/component --yes
 ```
 
 ## Forking Workflow
@@ -100,7 +109,23 @@ After forking, update the `registry.json` file:
 scm fork user/component
 
 # Fork specific version
-scm fork user/component --version 1.0.0
+scm fork user/component@1.0.0
+```
+
+## Examples
+
+```bash
+# Fork a button component
+scm fork johndoe/awesome-button
+
+# Fork with custom name
+scm fork johndoe/awesome-button --name my-button
+
+# Fork specific version
+scm fork johndoe/awesome-button@1.0.0
+
+# Fork with custom description
+scm fork johndoe/awesome-button --description "My custom button variant"
 ```
 
 ## Troubleshooting

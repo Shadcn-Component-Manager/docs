@@ -13,6 +13,34 @@ Create a new component with proper structure and files.
 scm create <component-name>
 ```
 
+## Options
+
+```bash
+# Component type (ui, hook, theme, block, page)
+scm create my-component --type ui
+
+# Component description
+scm create my-component --description "A beautiful button component"
+
+# Component author
+scm create my-component --author "John Doe"
+
+# Comma-separated categories
+scm create my-component --categories "ui,button,interactive"
+
+# Custom output path
+scm create my-component --path custom/path
+
+# Skip confirmation prompts
+scm create my-component --yes
+
+# Overwrite existing directory
+scm create my-component --force
+
+# Don't generate template files
+scm create my-component --skip-template
+```
+
 ## Example
 
 ```bash
@@ -89,6 +117,26 @@ MyAwesomeButton.displayName = "MyAwesomeButton"
 
 export { MyAwesomeButton }
 ```
+
+## Component Types
+
+<CardGroup cols={2}>
+  <Card title="ui">
+    Standard UI components (default)
+  </Card>
+  <Card title="hook">
+    React hooks
+  </Card>
+  <Card title="theme">
+    Theme configurations
+  </Card>
+  <Card title="block">
+    Complex UI blocks
+  </Card>
+  <Card title="page">
+    Page-level components
+  </Card>
+</CardGroup>
 
 ## Reserved Names
 

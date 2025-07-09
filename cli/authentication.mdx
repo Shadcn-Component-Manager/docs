@@ -17,8 +17,24 @@ scm login
   **What happens:**
   - Opens browser for GitHub authorization
   - Requests necessary permissions (repo, read:user, user:email)
-  - Stores token securely in `~/.config/scm/config.json`
+  - Stores token securely in `~/.scm/config.json`
 </Note>
+
+## Login Options
+
+```bash
+# Force re-authentication
+scm login --force
+
+# Use existing token instead of OAuth flow
+scm login --token your-github-token
+
+# Check current authentication status
+scm login --check
+
+# Show detailed auth info
+scm login --verbose
+```
 
 ## Logout
 
@@ -27,6 +43,19 @@ scm logout
 ```
 
 Removes stored authentication token.
+
+## Logout Options
+
+```bash
+# Clear all cached data (not just token)
+scm logout --all
+
+# Clear cache only
+scm logout --cache
+
+# Force logout without confirmation
+scm logout --force
+```
 
 ## OAuth Flow
 
@@ -65,7 +94,7 @@ SCM requests these GitHub scopes:
 
 <CardGroup cols={2}>
   <Card title="Location" icon="folder">
-    `~/.config/scm/config.json`
+    `~/.scm/config.json`
   </Card>
   <Card title="Security" icon="shield">
     Token stored in plain text (standard for CLI tools)
