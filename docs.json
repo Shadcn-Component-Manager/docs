@@ -84,8 +84,7 @@
           {
             "group": "Configuration",
             "pages": [
-              "cli/configuration",
-              "cli/reserved-names"
+              "cli/configuration"
             ]
           },
           {

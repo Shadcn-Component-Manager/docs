@@ -3,68 +3,44 @@ title: 'Publish Command'
 description: 'Publish your component to the SCM registry.'
 ---
 
-# Publish Command
-
-Publish a component to the SCM registry with automatic versioning.
-
 ## Basic Usage
 
 ```bash
 scm publish
 ```
 
-Run this command from your component directory (where `registry.json` is located).
+Run from your component directory containing `registry.json`.
 
 ## Options
 
 ```bash
-# Skip confirmation prompts
-scm publish --yes
+scm publish [options]
 
-# Custom commit message
-scm publish --message "feat: add new button variant"
-
-# Specific item from registry collection
-scm publish --item my-component
-
-# Specify version manually (override auto-detection)
-scm publish --version 2.0.0
+Options:
+  -y, --yes                    Skip confirmation prompts
+  -m, --message <message>      Custom commit message
+  -i, --item <item>            Specific item from registry collection
+  -v, --version <version>      Specify version manually (override auto-detection)
+  --verbose                    Show detailed information
 ```
 
-## Publishing Workflow
-
-<Steps>
-  <Step title="Validate">
-    Validates component structure and metadata
-  </Step>
-  <Step title="Check Conflicts">
-    Checks for reserved names and conflicts
-  </Step>
-  <Step title="Detect Version">
-    Automatically detects version changes
-  </Step>
-  <Step title="Create PR">
-    Creates GitHub branch and pull request
-  </Step>
-  <Step title="Review">
-    Registry maintainers review and merge
-  </Step>
-</Steps>
-
-## Example Output
+## Command Flow
 
 ```bash
 $ scm publish
 🔍 Reading and validating registry.json...
-✅ Validated component: my-component
+✅ Found registry collection: my-registry
+✅ Selected item: my-button
 🔍 Validating component files...
 ✅ Component files validated
 📊 Analyzing version changes...
 📈 Version change: 1.0.0 → 1.1.0
+Publish my-button as version 1.1.0? (Y/n)
+🔧 Preparing for publish...
 🌿 Creating new branch...
 📤 Uploading component files...
 🔗 Creating pull request...
-✅ Successfully published my-component v1.1.0
+✅ Successfully published my-button v1.1.0
 📋 Pull Request: https://github.com/Shadcn-Component-Manager/registry/pull/123
 ✅ Your component has been submitted for review
 💡 The component will be available for installation once the PR is merged
@@ -73,144 +49,133 @@ $ scm publish
 ## Examples
 
 ```bash
-# Basic publish
+# Basic publish with prompts
 scm publish
 
-# Skip confirmation prompts
+# Skip all prompts
 scm publish --yes
 
 # Custom commit message
-scm publish --message "feat: add awesome button component"
+scm publish --message "feat: add new button variant"
 
-# Specify version manually
+# Force specific version
 scm publish --version 2.0.0
 
 # Publish specific item from collection
 scm publish --item my-button
+
+# Verbose output
+scm publish --verbose
 ```
 
-## Component Requirements
+## Registry.json Format
 
-### Valid registry.json
+Your component must have a valid shadcn/ui registry.json:
 
 ```json
 {
-  "name": "my-component",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-button",
   "type": "registry:ui",
-  "title": "My Component",
-  "description": "A description of your component",
+  "title": "My Button",
+  "description": "A custom button component",
   "files": [
     {
-      "path": "MyComponent.tsx",
+      "path": "MyButton.tsx",
       "type": "registry:ui"
     }
   ],
   "dependencies": ["react@^18.0.0"],
   "version": "1.0.0",
   "author": "Your Name <your-email@example.com>",
-  "categories": ["ui"]
+  "categories": ["ui", "button"]
 }
 ```
 
-### File Structure
+## File Structure
 
 ```
 my-component/
-├── registry.json              # Component metadata
-├── MyComponent.tsx            # Main component file
-├── useMyComponent.ts          # Custom hook (optional)
-├── styles.css                 # Styles (optional)
-└── README.md                  # Documentation (recommended)
+├── registry.json    # Standard shadcn/ui registry.json
+├── MyButton.tsx     # Component file (referenced in registry.json)
+├── README.md        # Documentation (optional)
+└── styles.css       # Styles (optional)
 ```
 
-## Version Management
+## Version Detection
 
-### Automatic Detection
-
-SCM automatically detects version changes:
-
+### Automatic (Default)
 ```bash
-# If you update your component files
 scm publish
-# Output: 📈 Version change: 1.0.0 → 1.1.0
+# Analyzes file changes and bumps version automatically
 ```
 
-### Manual Version
+### Manual Override
+```bash
+scm publish --version 2.0.0
+# Forces specific version regardless of changes
+```
+
+## Registry Collection Support
+
+If your registry.json contains multiple items:
+
+```json
+{
+  "name": "my-registry",
+  "homepage": "https://example.com",
+  "items": [
+    {
+      "name": "my-button",
+      "type": "registry:ui",
+      // ... button config
+    },
+    {
+      "name": "my-card", 
+      "type": "registry:ui",
+      // ... card config
+    }
+  ]
+}
+```
+
+Select specific item:
+```bash
+scm publish --item my-button
+```
+
+## Error Handling
 
 ```bash
-# Specify version manually
-scm publish --version 2.0.0
+# Missing registry.json
+❌ registry.json not found
+💡 Make sure you are in a component directory with a valid registry.json file
+
+# Invalid schema
+❌ Invalid registry.json file
+Validation errors:
+  - name: Name cannot be empty
+  - type: Invalid type
+
+# File not found
+❌ File validation failed
+  - File not found: MyButton.tsx
+
+# Authentication required
+❌ You are not logged in. Please run `scm login` first
 ```
-
-### Semantic Versioning
-
-<CardGroup cols={3}>
-  <Card title="Major (X.0.0)">
-    Breaking changes
-  </Card>
-  <Card title="Minor (0.X.0)">
-    New features, backward compatible
-  </Card>
-  <Card title="Patch (0.0.X)">
-    Bug fixes, backward compatible
-  </Card>
-</CardGroup>
 
 ## GitHub Integration
 
-### Pull Request Creation
-
-When you publish, SCM creates a pull request:
-
-- **Branch Name**: `component/username/component-name-version`
-- **Commit Message**: `feat: add component-name vversion`
-- **PR Title**: `Add username/component-name vversion`
-
-### Review Process
-
-<Steps>
-  <Step title="Automated Checks">
-    GitHub Actions validate the component
-  </Step>
-  <Step title="Maintainer Review">
-    Registry maintainers review the PR
-  </Step>
-  <Step title="Feedback">
-    You may receive feedback or requests for changes
-  </Step>
-  <Step title="Merge">
-    Once approved, the PR is merged
-  </Step>
-</Steps>
-
-## Troubleshooting
-
-<CardGroup cols={2}>
-  <Card title="Validation Failed">
-    **Error:** Component validation failed
-    
-    **Solution:**
-    - Check error messages for missing fields
-    - Fix issues in registry.json or component files
-    - Ensure all required files exist
-  </Card>
-  <Card title="Permission Denied">
-    **Error:** Permission denied
-    
-    **Solution:**
-    - Ensure you are authenticated (`scm login`)
-    - Check GitHub permissions
-    - Verify repository access
-  </Card>
-</CardGroup>
+- **Branch**: `component/{username}/{component-name}-{version}-{timestamp}`
+- **PR Title**: `[Component] Add {component-name} v{version}`
+- **Auto-merge**: Valid components are automatically merged
+- **Registry**: Updates `registry.json` index automatically
 
 ## Related Commands
 
-<CardGroup cols={2}>
-  <Card title="scm create" href="/cli/create">
-    Create a new component
-  </Card>
-  <Card title="scm add" href="/cli/add">
-    Install components
-  </Card>
-</CardGroup> 
+```bash
+scm create my-button    # Create new component
+scm login              # Authenticate with GitHub
+scm add user/button    # Install components
+``` 

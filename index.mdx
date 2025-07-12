@@ -17,14 +17,14 @@ npm install -g @shadcn-component-manager/scm
     scm login
     ```
   </Step>
-  <Step title="Browse">
-    ```bash
-    scm browse
-    ```
-  </Step>
   <Step title="Search">
     ```bash
     scm search button
+    ```
+  </Step>
+  <Step title="Preview">
+    ```bash
+    scm preview username/component-name
     ```
   </Step>
   <Step title="Install">
@@ -57,8 +57,8 @@ npm install -g @shadcn-component-manager/scm
   <Card title="One Command Install" icon="download" href="/cli/add">
     Install components with one command
   </Card>
-  <Card title="Search & Browse" icon="search" href="/web/search">
-    Search and browse component library
+  <Card title="Search & Preview" icon="search" href="/cli/search">
+    Search and preview components
   </Card>
   <Card title="Publish Components" icon="upload" href="/cli/publish">
     Publish your own components
@@ -69,29 +69,43 @@ npm install -g @shadcn-component-manager/scm
   <Card title="Versioning" icon="git-branch" href="/cli/update">
     Semantic versioning
   </Card>
+  <Card title="Fork & Customize" icon="git-fork" href="/cli/fork">
+    Fork existing components
+  </Card>
 </CardGroup>
 
 ## Core Commands
 
 <CodeGroup>
-  ```bash authentication
-  scm login          # Authenticate with GitHub
-  ```
-  ```bash discovery
-  scm search <query> # Search components
-  ```
-  ```bash installation
-  scm add <component> # Install component
-  ```
-  ```bash creation
-  scm create <name>  # Create new component
-  ```
-  ```bash publishing
-  scm publish        # Publish component
-  ```
-  ```bash updates
-  scm update         # Update components
-  ```
+  <CodeGroupItem title="Authentication">
+    ```bash
+    scm login          # Authenticate with GitHub
+    scm logout         # Clear authentication
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Discovery">
+    ```bash
+    scm search <query> # Search components
+    scm preview <component> # Preview component details
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Installation">
+    ```bash
+    scm add <component> # Install component
+    scm update [component] # Update components
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Creation">
+    ```bash
+    scm create <name>  # Create new component
+    scm fork <component> # Fork existing component
+    ```
+  </CodeGroupItem>
+  <CodeGroupItem title="Publishing">
+    ```bash
+    scm publish        # Publish component
+    ```
+  </CodeGroupItem>
 </CodeGroup>
 
 ## Quick Links

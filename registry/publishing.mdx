@@ -1,43 +1,84 @@
 ---
 title: 'Publishing Workflow'
-description: 'Learn how to publish components to the SCM registry using the CLI tool.'
+description: 'Learn how to publish components to the SCM registry using standard shadcn/ui registry.json format.'
 ---
 
-# Publishing Workflow
+## How SCM Works
 
-Publishing a component to the SCM registry is done exclusively through the CLI tool with automated validation and auto-merge workflows.
-
-## Publishing Steps
+SCM takes your **standard shadcn/ui registry.json** and publishes it to the SCM community registry. You build using the familiar shadcn/ui format, SCM handles the registry infrastructure.
 
 <Steps>
-  <Step title="Create Component">
-    Use `scm create` to generate component structure
+  <Step title="Use shadcn/ui Format">
+    Create or use existing shadcn/ui registry.json format
   </Step>
-  <Step title="Develop & Test">
-    Customize component and test thoroughly
+  <Step title="Develop Component">
+    Build component using standard shadcn/ui patterns
   </Step>
-  <Step title="Publish">
-    Run `scm publish` to submit to registry
+  <Step title="Publish via SCM">
+    Run `scm publish` to upload to SCM registry
   </Step>
-  <Step title="Automated Validation">
-    GitHub Actions validate structure and metadata
-  </Step>
-  <Step title="Auto-Merge">
-    Valid components are automatically merged
+  <Step title="SCM Processing">
+    SCM converts to its registry structure automatically
   </Step>
   <Step title="Available">
-    Component appears in registry index
+    Component appears in SCM registry index
   </Step>
 </Steps>
+
+## Standard shadcn/ui Structure
+
+Your component should follow the standard shadcn/ui structure:
+
+```
+my-component/
+├── registry.json    # Standard shadcn/ui registry.json
+├── README.md        # Documentation
+├── MyComponent.tsx  # Main component file
+├── useMyComponent.ts # Hook (optional)
+└── styles.css       # Styles (optional)
+```
+
+## registry.json Example (Standard shadcn/ui)
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-button",
+  "type": "registry:ui",
+  "title": "My Awesome Button",
+  "description": "A beautiful button component with multiple variants",
+  "files": [
+    {
+      "path": "MyComponent.tsx",
+      "type": "registry:ui"
+    },
+    {
+      "path": "useMyComponent.ts",
+      "type": "registry:hook"
+    }
+  ],
+  "dependencies": ["react@^18.0.0", "lucide-react@^0.3.0"],
+  "registryDependencies": ["shadcn/button"],
+  "version": "1.0.0",
+  "author": "Your Name <your-email@example.com>",
+  "categories": ["ui", "button"]
+}
+```
 
 ## CLI Publishing Commands
 
 <CodeGroup>
+  <CodeGroupItem title="Create Component">
+    ```bash
+    scm create my-button
+    ```
+    Generate component with standard shadcn/ui structure
+  </CodeGroupItem>
   <CodeGroupItem title="Basic Publish">
     ```bash
     scm publish
     ```
-    Standard publish with confirmation prompts
+    Publish standard shadcn/ui component to SCM registry
   </CodeGroupItem>
   <CodeGroupItem title="Skip Confirmation">
     ```bash
@@ -51,46 +92,108 @@ Publishing a component to the SCM registry is done exclusively through the CLI t
     ```
     Use custom commit message
   </CodeGroupItem>
+  <CodeGroupItem title="Manual Version">
+    ```bash
+    scm publish --version 2.0.0
+    ```
+    Override auto-detected version
+  </CodeGroupItem>
 </CodeGroup>
+
+## Component Types
+
+SCM supports all standard shadcn/ui component types:
+
+<CardGroup cols={2}>
+  <Card title="registry:ui">
+    UI components and single-file primitives
+  </Card>
+  <Card title="registry:component">
+    Simple components
+  </Card>
+  <Card title="registry:block">
+    Complex components with multiple files
+  </Card>
+  <Card title="registry:hook">
+    React hooks
+  </Card>
+  <Card title="registry:lib">
+    Utilities and types
+  </Card>
+  <Card title="registry:page">
+    Page or file-based routes
+  </Card>
+  <Card title="registry:file">
+    Miscellaneous files
+  </Card>
+  <Card title="registry:style">
+    Registry styles
+  </Card>
+</CardGroup>
+
+## SCM Registry Structure
+
+SCM automatically converts your shadcn/ui format to its registry structure:
+
+```
+registry/
+└── components/
+    └── {github-username}/
+        └── {component-name}/
+            └── {version}/
+                ├── registry.json  # Your shadcn/ui registry.json
+                ├── README.md      # Your documentation
+                ├── MyComponent.tsx # Your component files
+                └── ...            # All other files
+```
 
 ## Automated Validation
 
 <CardGroup cols={2}>
-  <Card title="Required Fields">
-    - name, type, title, description
-    - Valid component type
-    - Semantic versioning
+  <Card title="shadcn/ui Schema">
+    - Must conform to shadcn/ui registry-item schema
+    - Valid JSON structure
+    - Proper file types and paths
   </Card>
   <Card title="File Validation">
-    - All files must exist
-    - Proper file organization
-    - Valid file paths
+    - All files listed in registry.json must exist
+    - Files must be readable and valid
+    - No dangerous file paths
   </Card>
   <Card title="Naming Rules">
     - Lowercase with hyphens only
     - No reserved names
     - Valid characters: a-z, 0-9, -
   </Card>
-  <Card title="Component Types">
-    - registry:component
-    - registry:block
-    - registry:hook
-    - registry:lib
+  <Card title="Version Management">
+    - Semantic versioning required
+    - Auto-detection of changes
+    - Manual version override available
   </Card>
 </CardGroup>
 
-## Auto-Merge Process
+## Publishing Process
 
 <CardGroup cols={2}>
-  <Card title="Validation Pass">
-    - All checks pass automatically
-    - PR is merged without manual review
-    - Component becomes available immediately
+  <Card title="Validation">
+    - Validates shadcn/ui registry.json format
+    - Checks all files exist and are valid
+    - Ensures proper component structure
   </Card>
-  <Card title="Validation Fail">
-    - PR remains open with error details
-    - Fix issues and push updates
-    - Re-validation occurs automatically
+  <Card title="GitHub Integration">
+    - Creates pull request to SCM registry
+    - Uses GitHub OAuth for authentication
+    - Automated merge for valid components
+  </Card>
+  <Card title="Registry Update">
+    - Updates registry index automatically
+    - Makes component available for installation
+    - Updates search and discovery
+  </Card>
+  <Card title="Notification">
+    - Provides PR link for tracking
+    - Shows merge status
+    - Confirms availability
   </Card>
 </CardGroup>
 
@@ -103,16 +206,16 @@ Publishing a component to the SCM registry is done exclusively through the CLI t
     - [ ] Linting passes without errors
     - [ ] Documentation is complete
   </Card>
-  <Card title="Metadata">
-    - [ ] `registry.json` is valid and complete
-    - [ ] Version is bumped appropriately
-    - [ ] Dependencies are correctly listed
-    - [ ] Categories are appropriate
+  <Card title="shadcn/ui Format">
+    - [ ] registry.json follows shadcn/ui schema
+    - [ ] All required fields are present
+    - [ ] File paths are correct
+    - [ ] Dependencies are accurate
   </Card>
   <Card title="Files">
     - [ ] All files exist and are valid
     - [ ] Component file has correct extension
-    - [ ] Files are organized in registry/ subdirectories
+    - [ ] Files follow shadcn/ui structure
     - [ ] Examples are working
   </Card>
   <Card title="Testing">
@@ -131,13 +234,13 @@ Publishing a component to the SCM registry is done exclusively through the CLI t
     
     **Solution:** Ensure all required fields are present in registry.json
   </Card>
-  <Card title="Invalid Type">
-    **Error:** Invalid type: registry:ui. Must be one of: registry:component, registry:block, registry:hook, registry:lib
+  <Card title="Invalid Schema">
+    **Error:** Invalid registry.json schema
     
-    **Solution:** Use correct component type
+    **Solution:** Follow shadcn/ui registry-item schema exactly
   </Card>
   <Card title="File Not Found">
-    **Error:** File not found: registry/components/MyComponent.tsx
+    **Error:** File not found: MyComponent.tsx
     
     **Solution:** Ensure all files listed in registry.json exist
   </Card>
@@ -148,11 +251,31 @@ Publishing a component to the SCM registry is done exclusively through the CLI t
   </Card>
 </CardGroup>
 
+## CSS Variables Support
+
+Components can include CSS variables that are automatically applied:
+
+```json
+{
+  "cssVars": {
+    "theme": {
+      "font-heading": "Poppins, sans-serif"
+    },
+    "light": {
+      "brand": "20 14.3% 4.1%"
+    },
+    "dark": {
+      "brand": "20 14.3% 4.1%"
+    }
+  }
+}
+```
+
 ## After Publishing
 
 <CardGroup cols={2}>
   <Card title="Registry Index">
-    The registry index (`registry.json`) is regenerated automatically
+    The registry index is regenerated automatically
   </Card>
   <Card title="Availability">
     Your component is available for install and search
@@ -171,7 +294,7 @@ Publishing a component to the SCM registry is done exclusively through the CLI t
   <Card title="Before Publishing">
     - Test your component thoroughly
     - Write clear, helpful documentation
-    - Follow component patterns
+    - Follow shadcn/ui component patterns
     - Check for reserved names
   </Card>
   <Card title="During Development">
@@ -193,6 +316,13 @@ Publishing a component to the SCM registry is done exclusively through the CLI t
     - Update changelog
   </Card>
 </CardGroup>
+
+## Workflow Summary
+
+1. **Create**: Use `scm create` to generate a component with standard shadcn/ui structure
+2. **Develop**: Build your component using standard shadcn/ui patterns
+3. **Publish**: Use `scm publish` to upload to SCM registry
+4. **Share**: Others can install with `scm add username/component-name`
 
 ## Troubleshooting
 
